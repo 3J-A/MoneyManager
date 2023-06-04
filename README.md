@@ -1,4 +1,4 @@
-[![ci-bowfolios](https://github.com/bowfolios/bowfolios/actions/workflows/ci.yml/badge.svg)](https://github.com/bowfolios/bowfolios/actions/workflows/ci.yml)
+![ci-badge](https://github.com/3J-A/MoneyManager/actions/workflows/ci.yml/badge.svg)
 
 # Money Manager 
 
