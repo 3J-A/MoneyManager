@@ -31,7 +31,8 @@ Pending:
 *
 *
 
-Pending: 
+Pending:
+* Landing page
 
 #### Audrey Soares 
 *
