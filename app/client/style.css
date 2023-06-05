@@ -1,55 +1,86 @@
 /* Use Open Sans as the default sans serif font. */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Exo+2|Mandali:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Create some Bowfolio CSS variables. */
+/* Create some MoneyManager CSS variables. */
 :root {
-  --bowfolio-navbar-bg: #376551;
-  --bowfolio-navbar-bg-rgb: 55, 101, 81;
-  --bowfolio-navbar-text: white;
-  --bowfolio-navbar-highlight-text: var(--bs-gray-500);
+  --moneymanager-dark-green: #07673e;
+  --moneymanager-dark-green-rgb: 7, 103, 62;
+  --moneymanager-dark-blue: #09004a;
+  --moneymanager-dark-blue-rgb: 9, 0, 74;
+  --moneymanager-light-green: #48a27b;
+  --moneymanager-light-green-rgb: 72, 162, 123;
+  --moneymanager-light-pink: #fff8ff;
+  --moneymanager-light-pink-rgb: 255, 248, 255;
 }
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-dark: var(--bowfolio-navbar-bg);
-  --bs-dark-rgb: var(--bowfolio-navbar-bg-rgb);
+  --bs-dark: var(--moneymanager-dark-green);
+  --bs-dark-rgb: var(--moneymanager-dark-green-rgb);
 }
 
-/* Color the light Brand and links with dark color */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Mandali', sans-serif;
+}
+
+/* When logged out we switch the NavBar to bg-light so we need to override the styles to give dark text. */
 .bg-light span, .bg-light a {
-  color:  var(--bowfolio-navbar-bg);
+  color: var(--moneymanager-dark-green);
+}
+
+/* When logged out we highlight the selected route. */
+.bg-light a.nav-link.active {
+  color: var(--moneymanager-dark-blue);
+}
+
+/* Override the color on the dropdown when logged out. */
+.bg-light a.dropdown-item {
+  color: var(--moneymanager-dark-green);
 }
 
 /* When logged in we switch the NavBar to bg-dark so we need to override the styles to give light text. */
 .bg-dark span, .bg-dark a {
-  color: var(--bowfolio-navbar-text);
+  color: white;
 }
 
 /* When logged in we highlight the selected route. */
 .bg-dark a.nav-link.active {
-  color: var(--bowfolio-navbar-highlight-text);
+  color: #54c997;
 }
 
 /* Override the color on the dropdown when logged in. */
 .bg-dark a.dropdown-item {
-  color: var(--bowfolio-navbar-bg);
+  color: black;
 }
 
-/* Landing page color blocking */
+.navbar span {
+  font-family: 'Exo 2', sans-serif;
+}
+
+/* Landing page green color block */
 .landing-green-background {
-  background-color: var(--bowfolio-navbar-bg);
-  color: var(--bowfolio-navbar-text);
-  padding-top: 20px;
+  background-color: var(--moneymanager-light-green);
+  color: white;
+  padding: 70px 0px 70px 0px;
 }
 
+/* Landing page white color block */
 .landing-white-background {
-  background-color: var(--bowfolio-navbar-text);
-  color: var(--bowfolio-navbar-bg);
-  padding-top: 20px;
+  background-color: var(--moneymanager-light-pink);
+  color: var(--moneymanager-dark-blue);
+  padding: 70px 0px 70px 0px;
 }
 
 .reset-margins {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/* Customize the primary color for the buttons */
+.btn-primary {
+  --bs-btn-bg: #0fa4fa !important;
+  --bs-btn-border-color: #0fa4fa !important;
+  --bs-btn-hover-bg: #087ec2 !important;
+  --bs-btn-hover-border-color: #087ec2 !important;
 }

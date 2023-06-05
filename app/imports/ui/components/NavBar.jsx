@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ComponentIDs } from '../utilities/ids';
 
@@ -17,8 +17,8 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
-        <Navbar.Brand as={NavLink} to="/" className="align-items-center">
-          <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo.png" width={50} style={{ marginBottom: 3 }} /> Bowfolios</span>
+        <Navbar.Brand as={NavLink} to="/" className="align-items-center" style={{ paddingBottom: '12px' }}>
+          <span style={{ fontWeight: 800, fontSize: '28px' }}>MoneyManager</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>

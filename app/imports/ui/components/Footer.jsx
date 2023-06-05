@@ -3,10 +3,10 @@ import { Col, Container } from 'react-bootstrap';
 
 /* The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
-  <footer className="footer mt-auto py-3 bg-dark">
+  <footer className="footer mt-auto py-3" style={{ backgroundColor: '#07673e' }}>
     <Container>
       <Col className="text-center" style={{ color: 'white' }}>
-        The Bowfolios Project
+        ICS 427 Project
         {' '}
         <br />
         University of Hawaii
@@ -14,7 +14,7 @@ const Footer = () => (
         Honolulu, HI 96822
         {' '}
         <br />
-        <a style={{ color: 'white' }} href="https://bowfolios.github.io">https://bowfolios.github.io</a>
+        <a style={{ color: 'white' }} href="https://github.com/3J-A">https://github.com/3J-A</a>
       </Col>
     </Container>
   </footer>
