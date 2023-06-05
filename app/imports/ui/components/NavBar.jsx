@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
-        <Navbar.Brand as={NavLink} to="/" className="align-items-center">
+        <Navbar.Brand as={NavLink} to="/" className="align-items-center" style={{ paddingBottom: '12px' }}>
           <span style={{ fontWeight: 800, fontSize: '28px' }}>MoneyManager</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
