@@ -11,7 +11,7 @@ Money Manager is a web application that aids users in budgeting and financing th
 
 ## What is Pending? 
 * Personal Budget Calculator 
-*  
+* Personal PIN Number
 *
 
 ## Team Contribution 
@@ -26,6 +26,9 @@ Pending:
 *
 
 Pending: 
+* Sign-In Page
+* Sign-Up Page
+* Personal PIN Number (when the user logs in/signs up)
 
 #### Jake Walker
 *
