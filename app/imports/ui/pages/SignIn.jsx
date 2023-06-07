@@ -42,9 +42,9 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id={PageIDs.signInPage}>
+    <Container id={PageIDs.signInPage} className="py-3">
       <Row className="justify-content-center">
-        <Col xs={9}>
+        <Col xs={5}>
           <Col className="text-center">
             <h2>Login to your account</h2>
           </Col>
@@ -58,8 +58,10 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
-            <Link to="/signup">Click here to Register</Link>
+          <Alert variant="secondary" style={{ color: 'darkgreen' }}>
+            Don&#39;t have an account? Sign up
+            {' '}
+            <Link to="/signup" style={{ color: 'blue' }}>here</Link>
           </Alert>
           {error === '' ? (
             ''
