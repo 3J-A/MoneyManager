@@ -10,12 +10,13 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Profiles from '../pages/Profiles';
-import Projects from '../pages/Projects';
-import Interests from '../pages/Interests';
 import Home from '../pages/Home';
-import Filter from '../pages/Filter';
-import AddProject from '../pages/AddProject';
+import AboutUs from '../pages/AboutUs';
+import Monthly from '../pages/Monthly';
+import Budget from '../pages/Budget';
+import Expenses from '../pages/Expenses';
+import AddExpense from '../pages/AddExpense';
+import EditExpense from '../pages/EditExpense';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -27,12 +28,13 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/interests" element={<Interests />} />
-        <Route path="/profiles" element={<Profiles />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
-        <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
+        <Route path="/monthly" element={<ProtectedRoute><Monthly /></ProtectedRoute>} />
+        <Route path="/budget" element={<ProtectedRoute><Budget /></ProtectedRoute>} />
+        <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
+        <Route path="/addexpense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
+        <Route path="/editexpense" element={<ProtectedRoute><EditExpense /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
