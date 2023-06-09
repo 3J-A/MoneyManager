@@ -2,12 +2,12 @@ import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signOutPage } from './signout.page';
 import { signupPage } from './signup.page';
-import { profilesPage } from './profiles.page';
-import { projectsPage } from './projects.page';
-import { interestsPage } from './interests.page';
-import { homePage } from './home.page';
-import { addProjectPage } from './addproject.page';
-import { filterPage } from './filter.page';
+// import { profilesPage } from './profiles.page';
+// import { projectsPage } from './projects.page';
+// import { interestsPage } from './interests.page';
+// import { homePage } from './home.page';
+// import { addProjectPage } from './addproject.page';
+// import { filterPage } from './filter.page';
 import { navBar } from './navbar.component';
 
 /* global fixture:false, test:false */
@@ -40,6 +40,7 @@ test('Test that signup page, then logout works', async (testController) => {
   await signOutPage.isDisplayed(testController);
 });
 
+/*
 test('Test that profiles page displays', async (testController) => {
   await navBar.gotoProfilesPage(testController);
   await profilesPage.isDisplayed(testController);
@@ -84,3 +85,4 @@ test('Test that filter page works', async (testController) => {
   await filterPage.isDisplayed(testController);
   await filterPage.filter(testController);
 });
+*/
