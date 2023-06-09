@@ -26,9 +26,11 @@ export const ComponentIDs = {
   projectsMenuItem: 'projectsMenuItem',
   signInFormEmail: 'signInFormEmail',
   signInFormPassword: 'signInFormPassword',
+  signInFormPIN: 'signInFormPIN',
   signInFormSubmit: 'signInFormSubmit',
   signUpFormEmail: 'signUpFormEmail',
   signUpFormPassword: 'signUpFormPassword',
+  signUpFormPIN: 'signUpFormPIN',
   signUpFormSubmit: 'signUpFormSubmit',
 };
 
