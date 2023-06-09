@@ -17,21 +17,22 @@ const SignIn = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
+    PIN: Number,
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   // Handle Signin submission using Meteor's account mechanism.
   const submit = (doc) => {
     // console.log('submit', doc, redirect);
-    const { email, password } = doc;
-    Meteor.loginWithPassword(email, password, (err) => {
+    const { email, password, PIN } = doc;
+    Meteor.loginWithPassword(email, password, PIN, (err) => {
       if (err) {
         setError(err.reason);
       } else {
         setRedirect(true);
       }
     });
-    // console.log('submit2', email, password, error, redirect);
+    // console.log('submit2', email, password, PIN, error, redirect);
   };
 
   // Render the signin form.
@@ -45,7 +46,7 @@ const SignIn = () => {
     <Container id={PageIDs.signInPage} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
+          <Col className="text-center py-3">
             <h2>Login to your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
@@ -53,6 +54,7 @@ const SignIn = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
+                <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="Personal PIN Number" type="password" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>
