@@ -32,8 +32,8 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 const updateAccountMethod = 'Account.update';
 
 Meteor.methods({
-  'Account.update'({ firstName, lastName }) {
-    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.firstName': firstName, 'profile.lastName': lastName } });
+  'Account.update'({ name }) {
+    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.name': name } });
   },
 });
 

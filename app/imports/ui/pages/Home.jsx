@@ -14,8 +14,7 @@ import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
-  firstName: { type: String, label: 'First', optional: true },
-  lastName: { type: String, label: 'Last', optional: true },
+  name: { type: String, label: 'Name', optional: true },
   email: { type: String, label: 'Email', optional: true },
 });
 
@@ -58,20 +57,19 @@ const Home = () => {
       <Row className="justify-content-center">
         <Col xs={9} md={7}>
           <Col className="justify-content-center text-center py-3">
-            {(Meteor.user().profile.firstName === '') ? (
+            {(Meteor.user().profile.name === '') ? (
               [
                 <h2>Welcome!</h2>,
               ]
             ) : (
               [
-                <h2>Welcome {Meteor.user().profile.firstName}!</h2>,
+                <h2>Welcome {Meteor.user().profile.name}!</h2>,
               ]
             )}
           </Col>
           <AutoForm
             model={{
-              firstName: Meteor.user().profile.firstName,
-              lastName: Meteor.user().profile.lastName,
+              name: Meteor.user().profile.name,
               email: Meteor.user().username,
             }}
             schema={bridge}
@@ -83,15 +81,26 @@ const Home = () => {
                 <hr />
                 <Container className="justify-content-center px-4">
                   <Row>
-                    <Col><TextField id={ComponentIDs.homeFormFirstName} name="firstName" showInlineError placeholder="First name" /></Col>
-                  </Row>
-                  <Row>
-                    <Col><TextField id={ComponentIDs.homeFormLastName} name="lastName" showInlineError placeholder="Last name" /></Col>
+                    <Col><TextField id={ComponentIDs.homeFormName} name="name" showInlineError placeholder="Your name" /></Col>
                   </Row>
                   <Row>
                     <Col><TextField name="email" showInlineError placeholder="email" disabled value={Meteor.user().username} /></Col>
                   </Row>
                   <SubmitField id={ComponentIDs.homeFormSubmit} value="Update" />
+                </Container>
+              </Card.Body>
+            </Card>
+            <Card className="mt-5">
+              <Card.Body>
+                <h4><strong>Security</strong></h4>
+                <hr />
+                <Container className="px-4">
+                  Password
+                  <br />
+                  <br />
+                  PIN
+                  <br />
+                  <br />
                 </Container>
               </Card.Body>
             </Card>

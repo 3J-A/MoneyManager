@@ -1,4 +1,5 @@
 export const ComponentIDs = {
+  aboutUsPage: 'aboutUsPage',
   addProjectMenuItem: 'addProjectMenuItem',
   addProjectFormName: 'addProjectFormName',
   addProjectFormPicture: 'addProjectFormPicture',
@@ -13,8 +14,7 @@ export const ComponentIDs = {
   filterFormInterests: 'filterFormInterests',
   filterFormSubmit: 'filterFormSubmit',
   filterMenuItem: 'filterMenuItem',
-  homeFormFirstName: 'homeFormFirstName',
-  homeFormLastName: 'homeFormLastName',
+  homeFormName: 'homeFormName',
   homeFormBio: 'homeFormBio',
   homeFormSubmit: 'homeFormSubmit',
   homeMenuItem: 'homeMenuItem',
@@ -35,6 +35,7 @@ export const ComponentIDs = {
 };
 
 export const PageIDs = {
+  aboutUsPage: 'aboutUsPage',
   addProjectPage: 'addProjectPage',
   filterPage: 'filterPage',
   homePage: 'homePage',

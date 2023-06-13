@@ -72,6 +72,27 @@ h1, h2, h3, h4, h5, h6 {
   padding: 70px 0px 70px 0px;
 }
 
+/* About Us page green color block */
+.aboutus-green-background {
+  background-color: var(--moneymanager-light-green);
+  color: white;
+  padding: 70px 0px 70px 0px;
+  min-height: 618px;
+  height: calc(100vh - 75px - 128px);
+}
+
+@media(max-width: 991px){
+  .aboutus-green-background {
+    min-height: 1050px;
+  }
+}
+
+@media(max-width: 767px){
+  .aboutus-green-background {
+    min-height: 795px;
+  }
+}
+
 .reset-margins {
   margin-top: 0;
   margin-bottom: 0;
@@ -83,4 +104,20 @@ h1, h2, h3, h4, h5, h6 {
   --bs-btn-border-color: #0fa4fa !important;
   --bs-btn-hover-bg: #087ec2 !important;
   --bs-btn-hover-border-color: #087ec2 !important;
+}
+
+/* Change the toggle button's border and highlight color to white */
+#toggleBtn-light {
+  border: 1px solid white;
+  color: white;
+}
+
+/* Customize the toggle (hamburger) svg icon */
+#toggleBtn-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Change the toggle icon's border color to white */
+#toggleBtn-light.navbar-toggler {
+  border-color: rgb(255, 255, 255);
 }

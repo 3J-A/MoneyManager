@@ -14,13 +14,14 @@ const NavBar = () => {
   }), []);
   const menuStyle = { marginBottom: '0px' };
   const navbarClassName = loggedIn ? 'bg-dark' : 'bg-light';
+  const toggleBtnIDName = loggedIn ? 'toggleBtn-light' : 'toggleBtn-dark';
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="align-items-center" style={{ paddingBottom: '12px' }}>
           <span style={{ fontWeight: 800, fontSize: '28px' }}>MoneyManager</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
+        <Navbar.Toggle id={toggleBtnIDName} aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
             {currentUser ? (

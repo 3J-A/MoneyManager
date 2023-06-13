@@ -24,7 +24,7 @@ const SignUp = () => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { email, password, PIN } = doc;
-    Accounts.createUser({ username: email, email: email, password: password, profile: { firstName: '', lastName: '' }, PIN }, (err) => {
+    Accounts.createUser({ username: email, email: email, password: password, profile: { name: '' }, PIN }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -41,7 +41,7 @@ const SignUp = () => {
   return (
     <Container id={PageIDs.signUpPage} className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={9} md={7} lg={5}>
           <Col className="text-center py-3">
             <h2>Register your account</h2>
           </Col>

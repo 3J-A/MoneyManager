@@ -45,7 +45,7 @@ const SignIn = () => {
   return (
     <Container id={PageIDs.signInPage} className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={9} md={7} lg={5}>
           <Col className="text-center py-3">
             <h2>Login to your account</h2>
           </Col>
