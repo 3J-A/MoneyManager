@@ -29,6 +29,14 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
+const updateAccountMethod = 'Account.update';
+
+Meteor.methods({
+  'Account.update'({ firstName, lastName }) {
+    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.firstName': firstName, 'profile.lastName': lastName } });
+  },
+});
+
 const updateProfileMethod = 'Profiles.update';
 
 /**
@@ -65,4 +73,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod };
+export { updateAccountMethod, updateProfileMethod, addProjectMethod };
