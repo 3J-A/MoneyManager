@@ -7,6 +7,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
+import { Income } from '../../api/income/Income';
 
 /* eslint-disable no-console */
 
@@ -16,6 +17,18 @@ function createUser(email, role) {
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  }
+}
+
+const addIncome = (income) => {
+  console.log(`  Adding: ${income.lastName} (${income.owner})`);
+  Income.collection.insert(income);
+};
+
+if (Income.collection.find().count() === 0) {
+  if (Meteor.settings.defaultIncome) {
+    console.log('Creating default income.');
+    Meteor.settings.defaultIncome.forEach(income => addIncome(income));
   }
 }
 

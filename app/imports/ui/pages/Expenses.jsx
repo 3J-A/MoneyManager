@@ -1,79 +1,97 @@
 import React from 'react';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { AutoForm, TextField, LongTextField, SubmitField, ErrorsField, SelectField } from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
-import { Badge, Container, Card, Image, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
+import { addProjectMethod } from '../../startup/both/Methods';
+import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
+import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
-/* Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
-function getProjectData(name) {
-  const data = Projects.collection.findOne({ name });
-  const interests = _.pluck(ProjectsInterests.collection.find({ project: name }).fetch(), 'interest');
-  const profiles = _.pluck(ProfilesProjects.collection.find({ project: name }).fetch(), 'profile');
-  const profilePictures = profiles.map(profile => Profiles.collection.findOne({ email: profile })?.picture);
-  return _.extend({}, data, { interests, participants: profilePictures });
-}
+/* Create a schema to specify the structure of the data to appear in the form. */
+const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
+  name: String,
+  description: String,
+  homepage: String,
+  picture: String,
+  interests: { type: Array, label: 'Interests', optional: false },
+  'interests.$': { type: String, allowedValues: allInterests },
+  participants: { type: Array, label: 'Participants', optional: true },
+  'participants.$': { type: String, allowedValues: allParticipants },
+});
 
-/* Component for layout out a Project Card. */
-const MakeCard = ({ project }) => (
-  <Col>
-    <Card className="h-100">
-      <Card.Body>
-        <Card.Img src={project.picture} width={50} />
-        <Card.Title style={{ marginTop: '0px' }}>{project.name}</Card.Title>
-        <Card.Subtitle>
-          <span className="date">{project.title}</span>
-        </Card.Subtitle>
-        <Card.Text>
-          {project.description}
-        </Card.Text>
-      </Card.Body>
-      <Card.Body>
-        {project.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
-      </Card.Body>
-      <Card.Body>
-        {project.participants.map((p, index) => <Image key={index} roundedCircle src={p} width={50} />)}
-      </Card.Body>
-    </Card>
-  </Col>
-);
-
-MakeCard.propTypes = {
-  project: PropTypes.shape({
-    description: PropTypes.string,
-    name: PropTypes.string,
-    participants: PropTypes.arrayOf(PropTypes.string),
-    picture: PropTypes.string,
-    title: PropTypes.string,
-    interests: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-};
-
-/* Renders the Project Collection as a set of Cards. */
+/* Renders the Page for adding a project. */
 const Expenses = () => {
-  const { ready } = useTracker(() => {
+
+  /* On submit, insert the data. */
+  const submit = (data, formRef) => {
+    Meteor.call(addProjectMethod, data, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Project added successfully', 'success').then(() => formRef.reset());
+      }
+    });
+  };
+
+  const { ready, interests, profiles } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub1 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-    const sub2 = Meteor.subscribe(Projects.userPublicationName);
-    const sub3 = Meteor.subscribe(ProjectsInterests.userPublicationName);
-    const sub4 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub1 = Meteor.subscribe(Interests.userPublicationName);
+    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
+    const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+    const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
+    const sub5 = Meteor.subscribe(Projects.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+      interests: Interests.collection.find().fetch(),
+      profiles: Profiles.collection.find().fetch(),
     };
   }, []);
-  const projects = _.pluck(Projects.collection.find().fetch(), 'name');
-  const projectData = projects.map(project => getProjectData(project));
+
+  let fRef = null;
+  const allInterests = _.pluck(interests, 'name');
+  const allParticipants = _.pluck(profiles, 'email');
+  const formSchema = makeSchema(allInterests, allParticipants);
+  const bridge = new SimpleSchema2Bridge(formSchema);
+  const transform = (label) => ` ${label}`;
+  /* Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   return ready ? (
-    <Container id={PageIDs.projectsPage} style={pageStyle}>
-      <Row xs={1} md={2} lg={4} className="g-2">
-        {projectData.map((project, index) => <MakeCard key={index} project={project} />)}
+    <Container style={pageStyle}>
+      <Row id={PageIDs.addProjectPage} className="justify-content-center">
+        <Col xs={10}>
+          <Col className="text-center"><h2>Add Project</h2></Col>
+          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+            <Card>
+              <Card.Body>
+                <Row>
+                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormName} name="name" showInlineError placeholder="Project name" /></Col>
+                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormPicture} name="picture" showInlineError placeholder="Project picture URL" /></Col>
+                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormHomePage} name="homepage" showInlineError placeholder="Homepage URL" /></Col>
+                </Row>
+                <LongTextField id={ComponentIDs.addProjectFormDescription} name="description" placeholder="Describe the project here" />
+                <Row>
+                  <Col xs={6} id={ComponentIDs.addProjectFormInterests}>
+                    <SelectField name="interests" showInlineError placeholder="Interests" multiple checkboxes transform={transform} />
+                  </Col>
+                  <Col xs={6} id={ComponentIDs.addProjectFormParticipants}>
+                    <SelectField name="participants" showInlineError placeholder="Participants" multiple checkboxes transform={transform} />
+                  </Col>
+                </Row>
+                <SubmitField id={ComponentIDs.addProjectFormSubmit} value="Submit" />
+                <ErrorsField />
+              </Card.Body>
+            </Card>
+          </AutoForm>
+        </Col>
       </Row>
     </Container>
   ) : <LoadingSpinner />;
