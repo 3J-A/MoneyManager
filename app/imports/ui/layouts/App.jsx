@@ -17,6 +17,7 @@ import Budget from '../pages/Budget';
 import Expenses from '../pages/Expenses';
 import AddExpense from '../pages/AddExpense';
 import EditExpense from '../pages/EditExpense';
+import TwoFA from '../pages/2FA';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -35,6 +36,7 @@ const App = () => (
         <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
         <Route path="/addexpense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
         <Route path="/editexpense" element={<ProtectedRoute><EditExpense /></ProtectedRoute>} />
+        <Route path="/TwoFA" element={<TwoFA />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
