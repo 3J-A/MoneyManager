@@ -18,6 +18,7 @@ import Expenses from '../pages/Expenses';
 import AddExpense from '../pages/AddExpense';
 import EditExpense from '../pages/EditExpense';
 import Security from '../pages/Security';
+import Verify from '../pages/Verify';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/verify" element={<Verify />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/aboutus" element={<AboutUs />} />

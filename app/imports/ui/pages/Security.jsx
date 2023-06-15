@@ -8,12 +8,17 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { pageStyle } from './pageStyles';
 
-const formSchema = new SimpleSchema({
-  code: { type: String, label: '2FA Code', optional: false },
+const formSchemaPassword = new SimpleSchema({
+  oldPassword: { type: String, label: 'Old password', optional: false },
+  newPassword: { type: String, label: 'New password', optional: false },
+  confirmNewPassword: { type: String, label: 'Confirm new password', optional: false },
+});
+const formSchema2FA = new SimpleSchema({
+  code: { type: Number, label: '2FA Code', optional: false },
 });
 
 const Security = () => {
-  // Check is if 2FA is enabled
+  // Check if 2FA is enabled
   const [has2faEnabled, setHas2faEnabled] = useState(null);
   Accounts.has2faEnabled((err, result) => {
     if (err) {
@@ -22,6 +27,10 @@ const Security = () => {
       setHas2faEnabled(result);
     }
   });
+  // Update password
+  const updatePassword = (data) => {
+    console.log(`Update password: ${data}`);
+  };
   // Enable 2FA
   const enable2fa = (data) => {
     Accounts.enableUser2fa(data.code, (err) => {
@@ -35,38 +44,10 @@ const Security = () => {
       }
     });
   };
-  const bridge = new SimpleSchema2Bridge(formSchema);
+  const bridgePassword = new SimpleSchema2Bridge(formSchemaPassword);
+  const bridge2FA = new SimpleSchema2Bridge(formSchema2FA);
   const [qrCode, setQrCode] = useState(null);
   const [qrSecret, setQRSecret] = useState(null);
-  // const reportError = (error, callback) => {
-  //   if (callback) {
-  //     callback(error);
-  //   } else {
-  //     throw error;
-  //   }
-  // };
-  //
-  // Accounts.has2faEnabled = callback => {
-  //   Accounts.connection.call('has2faEnabled', callback);
-  // };
-  //
-  // Accounts.generate2faActivationQrCode = (appName, callback) => {
-  //   if (!appName) {
-  //     throw new Meteor.Error(
-  //       500,
-  //       'An app name is necessary when calling the function generate2faActivationQrCode',
-  //     );
-  //   }
-  //
-  //   if (!callback) {
-  //     throw new Meteor.Error(
-  //       500,
-  //       'A callback is necessary when calling the function generate2faActivationQrCode so a QR code can be provided',
-  //     );
-  //   }
-  //
-  //   Accounts.connection.call('generate2faActivationQrCode', appName, callback);
-  // };
   return (
     <Container className="justify-content-center" style={pageStyle}>
       <Row className="justify-content-center">
@@ -79,9 +60,16 @@ const Security = () => {
               <h4><strong>Change Password</strong></h4>
               <hr />
               <Container className="px-4">
-                <a href="/security" className="text-decoration-none">
-                  <Button variant="primary">Update password</Button>
-                </a>
+                <AutoForm
+                  model={{}}
+                  schema={bridgePassword}
+                  onSubmit={data => updatePassword(data)}
+                >
+                  <TextField name="oldPassword" showInlineError placeholder="" type="password" />
+                  <TextField name="newPassword" showInlineError placeholder="" type="password" />
+                  <TextField name="confirmNewPassword" showInlineError placeholder="" type="password" />
+                  <SubmitField value="Update password" />
+                </AutoForm>
               </Container>
             </Card.Body>
           </Card>
@@ -146,7 +134,7 @@ const Security = () => {
                     <hr />,
                     <AutoForm
                       model={{}}
-                      schema={bridge}
+                      schema={bridge2FA}
                       onSubmit={data => enable2fa(data)}
                     >
                       <TextField name="code" showInlineError placeholder="6-digit 2FA code" />

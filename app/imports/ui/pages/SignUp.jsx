@@ -17,7 +17,7 @@ const SignUp = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: Number,
+    PIN: { type: Number, label: 'PIN', optional: false },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 

@@ -172,12 +172,7 @@ const Home = () => {
                 <hr />
                 <Container className="px-4 pb-3">
                   <a href="/security" className="text-decoration-none">
-                    <Button variant="primary">Change password</Button>
-                  </a>
-                </Container>
-                <Container className="px-4">
-                  <a href="/security" className="text-decoration-none">
-                    <Button variant="primary">Two-factor authentication</Button>
+                    <Button variant="primary">Password and 2FA</Button>
                   </a>
                 </Container>
               </Card.Body>
