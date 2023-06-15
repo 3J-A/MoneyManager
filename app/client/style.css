@@ -121,3 +121,14 @@ h1, h2, h3, h4, h5, h6 {
 #toggleBtn-light.navbar-toggler {
   border-color: rgb(255, 255, 255);
 }
+
+.qrCode {
+  width: 202px;
+  height: 202px;
+  border: 1px solid rgb(225, 225, 225);
+}
+
+.secretCode {
+  min-height: 43px;
+  border: 1px solid rgb(225, 225, 225);
+}

@@ -20,14 +20,13 @@ const formSchema = new SimpleSchema({
 
 /* Renders the Home Page: what appears after the user logs in. */
 const Home = () => {
-
   /* On submit, insert the data. */
   const submit = (data) => {
     Meteor.call(updateAccountMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
-        swal('Success', 'Account updated successfully', 'success').then(function () {
+        swal('Success', 'You name was updated successfully.', 'success').then(function () {
           document.location.reload();
         });
       }
@@ -87,20 +86,6 @@ const Home = () => {
                     <Col><TextField name="email" showInlineError placeholder="email" disabled value={Meteor.user().username} /></Col>
                   </Row>
                   <SubmitField id={ComponentIDs.homeFormSubmit} value="Update" />
-                </Container>
-              </Card.Body>
-            </Card>
-            <Card className="mt-5">
-              <Card.Body>
-                <h4><strong>Security</strong></h4>
-                <hr />
-                <Container className="px-4">
-                  Password
-                  <br />
-                  <br />
-                  PIN
-                  <br />
-                  <br />
                 </Container>
               </Card.Body>
             </Card>
@@ -177,6 +162,22 @@ const Home = () => {
                   </Table>
                   <a href="/expenses" className="text-decoration-none">
                     <Button variant="primary">Edit</Button>
+                  </a>
+                </Container>
+              </Card.Body>
+            </Card>
+            <Card className="my-5">
+              <Card.Body>
+                <h4><strong>Security</strong></h4>
+                <hr />
+                <Container className="px-4 pb-3">
+                  <a href="/security" className="text-decoration-none">
+                    <Button variant="primary">Change password</Button>
+                  </a>
+                </Container>
+                <Container className="px-4">
+                  <a href="/security" className="text-decoration-none">
+                    <Button variant="primary">Two-factor authentication</Button>
                   </a>
                 </Container>
               </Card.Body>
