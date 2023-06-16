@@ -4,6 +4,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Income } from '../../api/income/Income';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -73,4 +74,13 @@ Meteor.methods({
   },
 });
 
-export { updateAccountMethod, updateProfileMethod, addProjectMethod };
+const addIncomeMethod = 'Income.add';
+
+Meteor.methods({
+  'Income.add'({ name, category, amount, monthly, weekly, date }) {
+    const owner = Meteor.user().username;
+    Income.collection.insert({ name, category, amount, monthly, weekly, date, owner });
+  },
+});
+
+export { updateAccountMethod, updateProfileMethod, addProjectMethod, addIncomeMethod };

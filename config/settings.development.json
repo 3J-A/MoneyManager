@@ -130,24 +130,5 @@
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],
-  "loadAssetsFile":  false,
-
-  "defaultIncome":[
-    {
-      "name": "Jamba Juice",
-      "type": "Work",
-      "amount": 500,
-      "monthly": false,
-      "weekly": true,
-      "owner": "john13@foo.com"
-    },
-    {
-      "name": "Weekly Chores",
-      "type": "Allowance",
-      "amount": 100,
-      "monthly": false,
-      "weekly": false,
-      "owner": "john13@foo.com"
-    }
-  ]
+  "loadAssetsFile":  false
 }

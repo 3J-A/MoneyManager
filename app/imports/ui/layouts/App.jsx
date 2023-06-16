@@ -17,6 +17,7 @@ import Budget from '../pages/Budget';
 import Expenses from '../pages/Expenses';
 import AddExpense from '../pages/AddExpense';
 import EditExpense from '../pages/EditExpense';
+import AddIncome from '../pages/AddIncome';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -32,6 +33,7 @@ const App = () => (
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/monthly" element={<ProtectedRoute><Monthly /></ProtectedRoute>} />
         <Route path="/budget" element={<ProtectedRoute><Budget /></ProtectedRoute>} />
+        <Route path="/addincome" element={<ProtectedRoute><AddIncome /></ProtectedRoute>} />
         <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
         <Route path="/addexpense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
         <Route path="/editexpense" element={<ProtectedRoute><EditExpense /></ProtectedRoute>} />

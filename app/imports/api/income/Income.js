@@ -11,18 +11,17 @@ class IncomeCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: { type: String, optional: false },
-      type: {
-        type: String,
-        allowedValues: ['Work', 'Allowance', 'Tax Return', 'MISC'],
-      },
+      category: { type: String, allowedValues: ['Work', 'Allowance', 'Tax Return', 'MISC'] },
       amount: { type: Number, optional: false },
       monthly: {
         type: Boolean,
         defaultValue: false,
+        optional: true,
       },
       weekly: {
         type: Boolean,
         defaultValue: false,
+        optional: true,
       },
       date: {
         type: Date,

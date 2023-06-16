@@ -15,6 +15,8 @@ Meteor.publish(Income.userPublicationName, function () {
   return this.ready();
 });
 
+// Meteor.publish(Income.userPublicationName, () => Income.collection.find());
+
 /** Define a publication to publish all interests. */
 Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
 

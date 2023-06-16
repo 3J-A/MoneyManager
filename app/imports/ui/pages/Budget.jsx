@@ -14,14 +14,14 @@ const MakeCard = ({ income }) => (
     <Card className="h-80" style={{ width: '40' }}>
       <Card.Header>
         <Card.Title>{income.name} </Card.Title>
-        <Card.Subtitle><span className="date">Type: {income.type}</span></Card.Subtitle>
+        <Card.Subtitle><span className="date">Type: {income.category}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>
           +${income.amount}
         </Card.Text>
         <Card.Text style={{ textAlign: 'right' }}>
-          income.date
+          {`${income.date}`}
         </Card.Text>
       </Card.Body>
     </Card>
@@ -31,7 +31,7 @@ const MakeCard = ({ income }) => (
 MakeCard.propTypes = {
   income: PropTypes.shape({
     name: PropTypes.string,
-    type: PropTypes.string,
+    category: PropTypes.string,
     amount: PropTypes.number,
     monthly: PropTypes.bool,
     weekly: PropTypes.bool,
