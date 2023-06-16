@@ -6,18 +6,21 @@ import PropTypes from 'prop-types';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
-import { Budget } from '../../api/budget/Budget';
+import { Income } from '../../api/income/Income';
 
-/* Component for layout out a Profile Card. */
-const MakeCard = ({ budget }) => (
+const MakeCard = ({ income }) => (
   <Col>
-    <Card className="h-100" style={{ width: '50' }}>
+    <Card className="h-80" style={{ width: '40' }}>
       <Card.Header>
-        <Card.Title>{budget.category} </Card.Title>
+        <Card.Title>{income.name} </Card.Title>
+        <Card.Subtitle><span className="date">{income.category}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          ${budget.amount}
+          +${income.amount}
+        </Card.Text>
+        <Card.Text style={{ textAlign: 'right' }}>
+          {`${income.date}`}
         </Card.Text>
       </Card.Body>
     </Card>
@@ -25,35 +28,38 @@ const MakeCard = ({ budget }) => (
 );
 
 MakeCard.propTypes = {
-  budget: PropTypes.shape({
+  income: PropTypes.shape({
     name: PropTypes.string,
     category: PropTypes.string,
     amount: PropTypes.number,
+    monthly: PropTypes.bool,
+    weekly: PropTypes.bool,
+    date: PropTypes.instanceOf(Date),
   }).isRequired,
 };
 
 /* Renders the Profile Collection as a set of Cards. */
-const Budgets = () => {
+const Incomes = () => {
 
-  const { ready, budget } = useTracker(() => {
+  const { ready, income } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub = Meteor.subscribe(Budget.userPublicationName);
-    const budgetItems = Budget.collection.find({}).fetch();
+    const sub = Meteor.subscribe(Income.userPublicationName);
+    const incomeItems = Income.collection.find({}).fetch();
     return {
-      budget: budgetItems,
+      income: incomeItems,
       ready: sub.ready(),
     };
   }, []);
   return ready ? (
     <Container id={PageIDs.profilesPage} style={pageStyle}>
-      <h1>Monthly Budgets</h1>
+      <h1>Budget Overview</h1>
       <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
-      <Row xs={3} md={2} lg={3} className="g-2">
+      <Row xs={1} md={1} lg={1} className="g-2">
         {/* eslint-disable-next-line no-shadow */}
-        {budget.map((budget, index) => <MakeCard key={index} budget={budget} />)}
+        {income.map((income, index) => <MakeCard key={index} income={income} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;
 };
 
-export default Budgets;
+export default Incomes;

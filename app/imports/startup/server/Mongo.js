@@ -8,6 +8,8 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
 import { Income } from '../../api/income/Income';
+import { Expenses } from '../../api/expenses/Expenses';
+import { Budget } from '../../api/budget/Budget';
 
 /* eslint-disable no-console */
 
@@ -21,7 +23,7 @@ function createUser(email, role) {
 }
 
 const addIncome = (income) => {
-  console.log(`  Adding: ${income.lastName} (${income.owner})`);
+  console.log(`  Adding: ${income.name} (${income.owner})`);
   Income.collection.insert(income);
 };
 
@@ -29,6 +31,30 @@ if (Income.collection.find().count() === 0) {
   if (Meteor.settings.defaultIncome) {
     console.log('Creating default income.');
     Meteor.settings.defaultIncome.forEach(income => addIncome(income));
+  }
+}
+
+const addExpense = (expense) => {
+  console.log(`  Adding: ${expense.name} (${expense.owner})`);
+  Expenses.collection.insert(expense);
+};
+
+if (Expenses.collection.find().count() === 0) {
+  if (Meteor.settings.defaultExpense) {
+    console.log('Creating default expense.');
+    Meteor.settings.defaultExpense.forEach(expense => addExpense(expense));
+  }
+}
+
+const addBudget = (budget) => {
+  console.log(`  Adding: ${budget.name} (${budget.owner})`);
+  Budget.collection.insert(budget);
+};
+
+if (Budget.collection.find().count() === 0) {
+  if (Meteor.settings.defaultBudget) {
+    console.log('Creating default budget.');
+    Meteor.settings.defaultBudget.forEach(budget => addBudget(budget));
   }
 }
 

@@ -6,11 +6,29 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Income } from '../../api/income/Income';
+import { Expenses } from '../../api/expenses/Expenses';
+import { Budget } from '../../api/budget/Budget';
 
 Meteor.publish(Income.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Income.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Expenses.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Expenses.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Budget.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Budget.collection.find({ owner: username });
   }
   return this.ready();
 });

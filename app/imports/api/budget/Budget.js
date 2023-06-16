@@ -2,32 +2,20 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /** Encapsulates state and variable values for this collection. */
-class ExpensesCollection {
+class BudgetCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ExpensesCollection';
+    this.name = 'BudgetCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: { type: String, optional: false },
       category: {
         type: String,
         allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'],
+        optional: false,
       },
       amount: { type: Number, optional: false },
-      monthly: {
-        type: Boolean,
-        defaultValue: false,
-      },
-      weekly: {
-        type: Boolean,
-        defaultValue: false,
-        optional: true,
-      },
-      date: {
-        type: Date,
-      },
       owner: {
         type: String,
       },
@@ -40,4 +28,4 @@ class ExpensesCollection {
   }
 }
 
-export const Expenses = new ExpensesCollection();
+export const Budget = new BudgetCollection();

@@ -1,42 +1,26 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, BoolField, ErrorsField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { addExpenseMethod } from '../../startup/both/Methods';
+import { addBudgetMethod } from '../../startup/both/Methods';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: { type: String, optional: false },
-  category: {
-    type: String,
-    allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'],
-  },
+  category: { type: String, allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'], optional: false  },
   amount: { type: Number, optional: false },
-  monthly: {
-    type: Boolean,
-    defaultValue: false,
-  },
-  weekly: {
-    type: Boolean,
-    defaultValue: false,
-    optional: true,
-  },
-  date: {
-    type: Date,
-  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddContact page for adding a document. */
-const AddExpense = () => {
+const AddBudget = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    Meteor.call(addExpenseMethod, data, (error) => {
+    Meteor.call(addBudgetMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -52,12 +36,11 @@ const AddExpense = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Add Expense</h2></Col>
+          <Col className="text-center"><h2>Create New Budget</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <Row>
-                  <Col><TextField name="name" /></Col>
                   <Col><SelectField
                     name="category"
                     showInlineError
@@ -68,13 +51,8 @@ const AddExpense = () => {
                 <Row>
                   <Col><TextField name="amount" /></Col>
                 </Row>
-                <Row>
-                  <Col><BoolField name="monthly" /></Col>
-                  <Col><BoolField name="weekly" /></Col>
-                </Row>
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="date" value={new Date()} />
               </Card.Body>
             </Card>
           </AutoForm>
@@ -84,4 +62,4 @@ const AddExpense = () => {
   );
 };
 
-export default AddExpense;
+export default AddBudget;
