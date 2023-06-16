@@ -60,8 +60,6 @@ const AddIncome = () => {
                     name="category"
                     showInlineError
                     placeholder="Select One"
-                    help="What is your level? (required)"
-                    helpClassName="text-danger"
                   />
                   </Col>
                 </Row>

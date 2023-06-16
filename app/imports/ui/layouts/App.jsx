@@ -19,6 +19,7 @@ import AddExpense from '../pages/AddExpense';
 import EditExpense from '../pages/EditExpense';
 import AddIncome from '../pages/AddIncome';
 import AddBudget from '../pages/AddBudget';
+import EditBudget from '../pages/EditBudget';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -35,10 +36,11 @@ const App = () => (
         <Route path="/monthly" element={<ProtectedRoute><Monthly /></ProtectedRoute>} />
         <Route path="/budget" element={<ProtectedRoute><Budget /></ProtectedRoute>} />
         <Route path="/addbudget" element={<ProtectedRoute><AddBudget /></ProtectedRoute>} />
+        <Route path="/editbudget/:_id" element={<ProtectedRoute><EditBudget /></ProtectedRoute>} />
         <Route path="/addincome" element={<ProtectedRoute><AddIncome /></ProtectedRoute>} />
         <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
         <Route path="/addexpense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
-        <Route path="/editexpense" element={<ProtectedRoute><EditExpense /></ProtectedRoute>} />
+        <Route path="/editexpense/:_id" element={<ProtectedRoute><EditExpense /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

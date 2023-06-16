@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -9,7 +9,7 @@ import { addBudgetMethod } from '../../startup/both/Methods';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  category: { type: String, allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'], optional: false  },
+  category: { type: String, allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'], optional: false },
   amount: { type: Number, optional: false },
 });
 
@@ -53,6 +53,7 @@ const AddBudget = () => {
                 </Row>
                 <SubmitField value="Submit" />
                 <ErrorsField />
+                <HiddenField name="owner" />
               </Card.Body>
             </Card>
           </AutoForm>

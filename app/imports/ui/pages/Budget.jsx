@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
@@ -19,6 +20,7 @@ const MakeCard = ({ budget }) => (
         <Card.Text>
           ${budget.amount}
         </Card.Text>
+        <Link to={`/edit/${budget._id}`}>Edit</Link>
       </Card.Body>
     </Card>
   </Col>
@@ -26,9 +28,9 @@ const MakeCard = ({ budget }) => (
 
 MakeCard.propTypes = {
   budget: PropTypes.shape({
-    name: PropTypes.string,
     category: PropTypes.string,
     amount: PropTypes.number,
+    _id: PropTypes.string,
   }).isRequired,
 };
 
@@ -50,7 +52,7 @@ const Budgets = () => {
       <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
       <Row xs={3} md={2} lg={3} className="g-2">
         {/* eslint-disable-next-line no-shadow */}
-        {budget.map((budget, index) => <MakeCard key={index} budget={budget} />)}
+        {budget.map((budget) => <MakeCard key={budget._id} budget={budget} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;
