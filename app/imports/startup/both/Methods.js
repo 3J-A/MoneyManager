@@ -4,6 +4,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Expenses } from '../../api/expenses/Expenses';
+import { Budget } from '../../api/budget/Budget';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -32,8 +34,8 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 const updateAccountMethod = 'Account.update';
 
 Meteor.methods({
-  'Account.update'({ name }) {
-    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.name': name } });
+  'Account.update'({ firstName, lastName }) {
+    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.firstName': firstName, 'profile.lastName': lastName } });
   },
 });
 
@@ -73,4 +75,22 @@ Meteor.methods({
   },
 });
 
-export { updateAccountMethod, updateProfileMethod, addProjectMethod };
+const addExpenseMethod = 'Expense.add';
+
+Meteor.methods({
+  'Expense.add'({ name, category, amount, monthly, weekly, date }) {
+    const owner = Meteor.user().username;
+    Expenses.collection.insert({ name, category, amount, monthly, weekly, date, owner });
+  },
+});
+
+const addBudgetMethod = 'Budget.add';
+
+Meteor.methods({
+  'Budget.add'({ category, amount }) {
+    const owner = Meteor.user().username;
+    Budget.collection.insert({ category, amount, owner });
+  },
+});
+
+export { updateAccountMethod, updateProfileMethod, addProjectMethod, addExpenseMethod, addBudgetMethod };
