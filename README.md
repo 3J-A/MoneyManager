@@ -14,27 +14,28 @@ Money Manager is a web application that aids users in budgeting and financing th
 * About Us Page
 * Security Settings Page
 * Two-Factor Authentication
+* Change Password
+* New Collections
 
 ## What is in progress? 
 * User Homepage
-* Change Password
 * Personal PIN Number
-
-## What is pending? 
-* Personal Budget Calculator 
-* New Collections
-* Monthly Page
 * Budget Page
 * Expenses Page
+
+## What is pending? 
+* Personal Budget Calculator
+* Monthly Page
 * Implement TestCafe
 
 ## Team Contribution 
 #### Jamie Laurin 
 * Create New Pages
-* 
+* New Collections
 
 Pending / In Progress: 
-* New Collections
+* Budget Page
+* Expenses Page
 
 #### Jazmin Lor 
 * Sign-In Page
@@ -49,10 +50,10 @@ Pending / In Progress:
 * About Us Page
 * Security Settings Page
 * Two-Factor Authentication
+* Change Password
 
 Pending / In Progress:
 * User Homepage
-* Change Password
 
 #### Audrey Soares 
 *

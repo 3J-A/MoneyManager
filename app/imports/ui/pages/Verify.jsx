@@ -48,7 +48,7 @@ const Verity = () => {
                 <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
                 <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="Personal PIN Number" type="password" />
-                <TextField id={ComponentIDs.signInFormPIN} name="code" placeholder="6-digit 2FA code" type="password" />
+                <TextField id={ComponentIDs.signInFormPIN} name="code" placeholder="6-digit 2FA code" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>

@@ -11,7 +11,6 @@ import { pageStyle } from './pageStyles';
 const formSchemaPassword = new SimpleSchema({
   oldPassword: { type: String, label: 'Old password', optional: false },
   newPassword: { type: String, label: 'New password', optional: false },
-  confirmNewPassword: { type: String, label: 'Confirm new password', optional: false },
 });
 const formSchema2FA = new SimpleSchema({
   code: { type: Number, label: '2FA Code', optional: false },
@@ -29,7 +28,16 @@ const Security = () => {
   });
   // Update password
   const updatePassword = (data) => {
-    console.log(`Update password: ${data}`);
+    Accounts.changePassword(data.oldPassword, data.newPassword, (err) => {
+      if (err) {
+        console.error('Error changing your password', err);
+        swal('Error', 'Incorrect password.', 'error');
+      } else {
+        swal('Success', 'Your password was changed successfully.', 'success').then(function () {
+          document.location.reload();
+        });
+      }
+    });
   };
   // Enable 2FA
   const enable2fa = (data) => {
@@ -67,7 +75,6 @@ const Security = () => {
                 >
                   <TextField name="oldPassword" showInlineError placeholder="" type="password" />
                   <TextField name="newPassword" showInlineError placeholder="" type="password" />
-                  <TextField name="confirmNewPassword" showInlineError placeholder="" type="password" />
                   <SubmitField value="Update password" />
                 </AutoForm>
               </Container>
