@@ -6,7 +6,8 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Profiles } from '../../api/profiles/Profiles';
+import { Budget } from '../../api/budget/Budget';
+import { Expenses } from '../../api/expenses/Expenses';
 import { updateAccountMethod } from '../../startup/both/Methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
@@ -35,9 +36,10 @@ const Home = () => {
 
   const { ready } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub = Meteor.subscribe(Profiles.userPublicationName);
+    const sub1 = Meteor.subscribe(Budget.userPublicationName);
+    const sub2 = Meteor.subscribe(Expenses.userPublicationName);
     return {
-      ready: sub.ready(),
+      ready: sub1.ready() && sub2.ready(),
     };
   }, []);
 
