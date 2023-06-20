@@ -40,10 +40,10 @@ Pending / In Progress:
 #### Jazmin Lor 
 * Sign-In Page
 * Sign-Up Page
-* Two-Factor Authentication
 
 Pending / In Progress: 
 * Personal PIN Number (when the user logs in/signs up)
+* Monthly Page
 
 #### Jake Walker
 * Landing Page
