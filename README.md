@@ -16,9 +16,9 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Two-Factor Authentication
 * Change Password
 * New Collections
-
-## What is in progress? 
 * User Homepage
+
+## What is in progress?
 * Personal PIN Number
 * Budget Page
 * Expenses Page
@@ -51,9 +51,10 @@ Pending / In Progress:
 * Security Settings Page
 * Two-Factor Authentication
 * Change Password
+* User Homepage
 
 Pending / In Progress:
-* User Homepage
+* 
 
 #### Audrey Soares 
 *
