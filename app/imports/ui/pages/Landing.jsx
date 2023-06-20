@@ -23,7 +23,7 @@ const Landing = () => {
                 made simple
               </h1>
               <h5>
-                MoneyManager makes it easy to set up a budget that automatically monitors your spending by category. Our spend trackers and alerts help keep you on track toward your financial goals.
+                MoneyManager makes it easy to set up a budget that automatically monitors your spending by category. Our expense tracker helps keep you on track toward your financial goals.
               </h5>
               <Container fluid className="text-center mt-4 py-5 px-0">
                 {(loggedOut) ? (
@@ -52,7 +52,7 @@ const Landing = () => {
         <Container>
           <Row md={1} lg={2}>
             <Col xs={6} className="text-center my-auto pb-5 px-1">
-              <Image src="/images/mobile_1.png" className="px-1" width={240} />
+              <Image src="/images/mobile_2.png" className="px-1" width={240} />
             </Col>
             <Col xs={6} className="my-auto">
               <h1 style={{ fontSize: '36pt' }}>
@@ -115,7 +115,7 @@ const Landing = () => {
               </Container>
             </Col>
             <Col xs={6} className="text-center my-auto px-1">
-              <Image src="/images/mobile_1.png" className="px-1" width={240} />
+              <Image src="/images/mobile_3.png" className="px-1" width={240} />
             </Col>
           </Row>
         </Container>

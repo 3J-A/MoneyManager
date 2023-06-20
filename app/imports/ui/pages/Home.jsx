@@ -28,7 +28,15 @@ const formSchema = new SimpleSchema({
 const MakeBudget = ({ budget, spent }) => (
   <Container className="px-0">
     <h4 className="mt-3">{budget.category}</h4>
-    <span style={{ fontSize: '27pt', color: '#48a27b' }}>${budget.amount - spent}</span>
+    {((budget.amount - spent) >= 0) ? (
+      [
+        <span style={{ fontSize: '27pt', color: '#48a27b' }}>${budget.amount - spent}</span>,
+      ]
+    ) : (
+      [
+        <span style={{ fontSize: '27pt', color: '#FF4545' }}>-${-(budget.amount - spent)}</span>,
+      ]
+    )}
     <h5 className="mt-2 mb-4 ms-1"><strong>${spent}</strong> of <strong>${budget.amount}</strong> spent</h5>
     <hr />
   </Container>
@@ -167,7 +175,15 @@ const Home = () => {
                 <hr />
                 <Container className="px-4">
                   <h4 className="mt-3">{`${month} ${year}`}</h4>
-                  <span style={{ fontSize: '40pt', color: '#48a27b' }}>${monthlyBudgetRounded - amountSpentRounded}</span>
+                  {((monthlyBudgetRounded - amountSpentRounded) >= 0) ? (
+                    [
+                      <span style={{ fontSize: '40pt', color: '#48a27b' }}>${monthlyBudgetRounded - amountSpentRounded}</span>,
+                    ]
+                  ) : (
+                    [
+                      <span style={{ fontSize: '40pt', color: '#FF4545' }}>-${-(monthlyBudgetRounded - amountSpentRounded)}</span>,
+                    ]
+                  )}
                   <h5 className="mt-2 mb-4 ms-1"><strong>${amountSpentRounded}</strong> of <strong>${monthlyBudgetRounded}</strong> spent</h5>
                   <a href="/monthly" className="text-decoration-none">
                     <Button variant="primary">Edit</Button>
@@ -189,9 +205,19 @@ const Home = () => {
                       }
                     />
                   ))}
-                  <a href="/budget" className="text-decoration-none">
-                    <Button variant="primary">Edit</Button>
-                  </a>
+                  {(Budget.collection.find().count() === 0) ? (
+                    [
+                      <a href="/budget" className="text-decoration-none">
+                        <Button variant="primary">Add</Button>
+                      </a>,
+                    ]
+                  ) : (
+                    [
+                      <a href="/budget" className="text-decoration-none">
+                        <Button variant="primary">Edit</Button>
+                      </a>,
+                    ]
+                  )}
                 </Container>
               </Card.Body>
             </Card>
@@ -202,7 +228,7 @@ const Home = () => {
                 <Container className="px-4">
                   {expenses.map((expense) => <MakeExpense key={expense._id} expense={expense} />)}
                   <a href="/expenses" className="text-decoration-none">
-                    <Button variant="primary">Edit</Button>
+                    <Button variant="primary">Add</Button>
                   </a>
                 </Container>
               </Card.Body>
