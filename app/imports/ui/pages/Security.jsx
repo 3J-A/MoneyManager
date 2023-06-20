@@ -144,7 +144,7 @@ const Security = () => {
                       schema={bridge2FA}
                       onSubmit={data => enable2fa(data)}
                     >
-                      <TextField name="code" showInlineError placeholder="6-digit 2FA code" />
+                      <TextField name="code" showInlineError placeholder="6-digit 2FA code" type="password" />
                       <SubmitField value="Enable" />
                     </AutoForm>,
                   ]
