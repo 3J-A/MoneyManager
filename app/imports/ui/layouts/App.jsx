@@ -20,6 +20,7 @@ import EditExpense from '../pages/EditExpense';
 import Security from '../pages/Security';
 import Verify from '../pages/Verify';
 import AddBudget from '../pages/AddBudget';
+import PIN from '../pages/PIN';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -29,6 +30,7 @@ const App = () => (
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/PIN" element={<PIN />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />

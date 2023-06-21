@@ -4,7 +4,8 @@ import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoField, AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+/* import PinInput from 'react-pin-input'; */
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /*
@@ -17,15 +18,14 @@ const SignUp = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: { type: String, label: 'PIN', optional: false },
+    PIN: { type: Number, label: 'PIN', optional: false },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const email = doc.email;
-    const password = doc.password;
-    const PIN = doc.PIN;
+    const { email, password, PIN } = doc;
+
     Accounts.createUser({ username: email, email: email, password: password, profile: { name: '' }, PIN: PIN }, (err) => {
       if (err) {
         setError(err.reason);
@@ -50,9 +50,34 @@ const SignUp = () => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField id={ComponentIDs.signUpFormEmail} name="email" placeholder="E-mail address" />
-                <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
-                <TextField id={ComponentIDs.signUpFormPIN} name="PIN" placeholder="4-Digit PIN Number" type="password" pattern="\d*" onKeyDown="if(this.value.length==4) return false;" />
+                <div>
+                  <TextField id={ComponentIDs.signUpFormEmail} name="email" placeholder="E-mail address" />
+                  <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
+                  <p>PIN Number</p>
+                  <AutoField
+                    name="PIN"
+                    id={ComponentIDs.signUpFormPIN}
+                    placeholder="4-Digit PIN Number"
+                    type="password"
+                    pattern="\d*"
+                    onKeyDown="if(this.value.length==4) return false;"
+                    onInput={(e) => {
+                      e.target.value = Math.max(0, parseInt(e.target.value, 10)).toString().slice(0, 4);
+                    }}
+                  />
+                  { /* <PinInput
+                    id={ComponentIDs.signUpFormPIN}
+                    name="PIN"
+                    length={4}
+                    focus
+                    type="number"
+                    inputMode="number"
+                    style={{ padding: '10px' }}
+                    inputStyle={{ borderColor: 'red' }}
+                    inputFocusStyle={{ borderColor: 'blue' }}
+                  /> */ }
+                </div>
+                {/* <  TextField id={ComponentIDs.signUpFormPIN} name="PIN" placeholder="4-Digit PIN Number" type="password" pattern="\d*" onKeyDown="if(this.value.length==4) return false;" /> */}
                 <p>Note: Do not ever share your personal PIN number with anyone!</p>
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signUpFormSubmit} />
