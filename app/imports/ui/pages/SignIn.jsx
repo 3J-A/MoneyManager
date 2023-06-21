@@ -19,14 +19,15 @@ const SignIn = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: { type: Number, label: 'PIN', optional: false },
+    PIN: { type: Number, label: 'PIN', optional: false, max: 4 },
   });
   const bridge = new SimpleSchema2Bridge(schema);
-
   // Handle Signin submission using Meteor's account mechanism.
   const submit = (doc) => {
-    const { email, password } = doc;
-    Meteor.loginWithPassword(email, password, (err) => {
+    const email = doc.email;
+    const password = doc.password;
+    const PIN = doc.PIN;
+    Meteor.loginWithPassword(email, password, PIN, (err) => {
       if (err) {
         if (err.error === 'no-2fa-code') {
           // send user to a page or show a component where they can provide a 2FA code
@@ -67,7 +68,7 @@ const SignIn = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
-                <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="Personal PIN Number" type="password" />
+                <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="4-Digit PIN Number" type="password" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>

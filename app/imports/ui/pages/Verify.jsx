@@ -7,7 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
-const Verity = () => {
+const Verify = () => {
   const [error, setError] = useState('');
   const [redirect, setRedirect] = useState(false);
   const schema = new SimpleSchema({
@@ -73,4 +73,4 @@ const Verity = () => {
   );
 };
 
-export default Verity;
+export default Verify;
