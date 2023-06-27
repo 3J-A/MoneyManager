@@ -11,6 +11,8 @@ import { PageIDs } from '../utilities/ids';
 import { Expenses } from '../../api/expenses/Expenses';
 
 /* Component for layout out a Profile Card. */
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 const MakeCard = ({ expense }) => (
   <Col>
     <Card className="mt-2" style={{ width: '40' }}>
@@ -23,8 +25,8 @@ const MakeCard = ({ expense }) => (
           <span style={{ fontSize: '30pt', color: '#C70039 ' }}>-${expense.amount}</span>
         </Card.Text>
         <Card.Text style={{ textAlign: 'right' }}>
-          {`${expense.date} `}
-          <Link to={`/editexpense/${expense._id}`}><Icon.PencilSquare id="icon" /></Link>
+          {`${months[expense.date.getMonth()]} ${expense.date.getDay()}, ${expense.date.getFullYear()} `}
+          <Link to={`/editexpense/${expense._id}`}> <Icon.PencilSquare id="icon" /></Link>
         </Card.Text>
       </Card.Body>
     </Card>
