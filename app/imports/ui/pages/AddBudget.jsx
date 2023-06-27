@@ -9,7 +9,7 @@ import { addBudgetMethod } from '../../startup/both/Methods';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  category: { type: String, allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'], optional: false },
+  category: { type: String, allowedValues: ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'], optional: false },
   amount: { type: Number, optional: false },
 });
 

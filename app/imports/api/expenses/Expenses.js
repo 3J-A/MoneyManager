@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import { Tracker } from 'meteor/tracker';
 
 /** Encapsulates state and variable values for this collection. */
 class ExpensesCollection {
@@ -13,7 +14,8 @@ class ExpensesCollection {
       name: { type: String, optional: false },
       category: {
         type: String,
-        allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'],
+        allowedValues:
+            ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'],
       },
       amount: { type: Number, optional: false },
       monthly: {
@@ -31,7 +33,7 @@ class ExpensesCollection {
       owner: {
         type: String,
       },
-    });
+    }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions

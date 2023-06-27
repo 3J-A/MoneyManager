@@ -20,7 +20,7 @@ const MakeCard = ({ budget }) => (
         <Card.Text>
           ${budget.amount}
         </Card.Text>
-        <Link to={`/edit/${budget._id}`}>Edit</Link>
+        <Link to={`/editbudget/${budget._id}`}>Edit</Link>
       </Card.Body>
     </Card>
   </Col>

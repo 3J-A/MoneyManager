@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
@@ -23,6 +24,7 @@ const MakeCard = ({ expense }) => (
         <Card.Text style={{ textAlign: 'right' }}>
           {`${expense.date}`}
         </Card.Text>
+        <Link to={`/editexpense/${expense._id}`}>Edit</Link>
       </Card.Body>
     </Card>
   </Col>
@@ -36,6 +38,7 @@ MakeCard.propTypes = {
     monthly: PropTypes.bool,
     weekly: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
+    _id: PropTypes.string,
   }).isRequired,
 };
 
@@ -57,7 +60,7 @@ const Expense = () => {
       <Button variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}
       <Row xs={1} md={1} lg={1} className="g-2">
         {/* eslint-disable-next-line no-shadow */}
-        {expense.map((expense, index) => <MakeCard key={index} expense={expense} />)}
+        {expense.map((expense) => <MakeCard key={expense._id} expense={expense} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;

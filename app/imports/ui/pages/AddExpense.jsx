@@ -12,7 +12,7 @@ const formSchema = new SimpleSchema({
   name: { type: String, optional: false },
   category: {
     type: String,
-    allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'],
+    allowedValues: ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'],
   },
   amount: { type: Number, optional: false },
   monthly: {

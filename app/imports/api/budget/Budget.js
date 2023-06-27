@@ -13,7 +13,7 @@ class BudgetCollection {
     this.schema = new SimpleSchema({
       category: {
         type: String,
-        allowedValues: ['Bill', 'Rent', 'Subscription', 'Groceries', 'MISC'],
+        allowedValues: ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'],
         optional: false,
       },
       amount: { type: Number, optional: false },
