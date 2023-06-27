@@ -1,13 +1,14 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, BoolField, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, BoolField, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Expenses } from '../../api/expenses/Expenses';
+import { updateExpense } from '../../startup/both/Methods';
 
 const bridge = new SimpleSchema2Bridge(Expenses.schema);
 
@@ -31,11 +32,15 @@ const EditExpense = () => {
   }, [_id]);
   // console.log('EditContact', doc, ready);
   // On successful submit, insert the data.
-  const submit = (data) => {
-    const { name, category, amount, monthly, weekly, date } = data;
-    Expenses.collection.update(_id, { $set: { name, category, amount, monthly, weekly, date } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+  const submit = (data, formRef) => {
+    Meteor.call(updateExpense, data, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Item added successfully', 'success');
+        formRef.reset();
+      }
+    });
   };
 
   return ready ? (
@@ -56,7 +61,7 @@ const EditExpense = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField name="amount" /></Col>
+                  <Col><NumField name="amount" /></Col>
                 </Row>
                 <Row>
                   <Col><BoolField name="monthly" /></Col>

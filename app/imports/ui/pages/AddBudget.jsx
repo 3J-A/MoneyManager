@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -49,7 +49,7 @@ const AddBudget = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField name="amount" /></Col>
+                  <Col><NumField name="amount" /></Col>
                 </Row>
                 <SubmitField value="Submit" />
                 <ErrorsField />

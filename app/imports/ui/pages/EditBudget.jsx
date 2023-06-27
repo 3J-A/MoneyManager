@@ -1,13 +1,14 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Budget } from '../../api/budget/Budget';
+import { updateBudget } from '../../startup/both/Methods';
 
 const bridge = new SimpleSchema2Bridge(Budget.schema);
 
@@ -31,11 +32,15 @@ const EditBudget = () => {
   }, [_id]);
   // console.log('EditContact', doc, ready);
   // On successful submit, insert the data.
-  const submit = (data) => {
-    const { category, amount } = data;
-    Budget.collection.update(_id, { $set: { category, amount } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+  const submit = (data, formRef) => {
+    Meteor.call(updateBudget, data, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Item added successfully', 'success');
+        formRef.reset();
+      }
+    });
   };
 
   return ready ? (
@@ -55,7 +60,7 @@ const EditBudget = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField name="amount" /></Col>
+                  <Col><NumField name="amount" /></Col>
                 </Row>
                 <SubmitField value="Submit" />
                 <ErrorsField />

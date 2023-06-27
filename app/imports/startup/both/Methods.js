@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import SimpleSchema from 'simpl-schema';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
@@ -94,18 +95,52 @@ Meteor.methods({
 });
 
 const updateBudget = 'Budget.update';
-
 Meteor.methods({
-  'Budget.update'({ category, amount }) {
-    Budget.collection.update({ $set: { category, amount } });
+  'Budget.update'({ _id, category, amount }) {
+    new SimpleSchema({
+      _id: { type: String },
+      category: {
+        type: String,
+        allowedValues: ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'],
+      },
+      amount: { type: Number, optional: false },
+    }).validate({ _id, category, amount });
+
+    Expenses.collection.update(_id, {
+      $set: { category, amount },
+    });
   },
 });
 
 const updateExpense = 'Expense.update';
 
 Meteor.methods({
-  'Expense.update'({ name, category, amount, monthly, weekly, date }) {
-    Expenses.collection.update({ $set: { name, category, amount, monthly, weekly, date } });
+  'Expense.update'({ _id, name, category, amount, monthly, weekly, date }) {
+    new SimpleSchema({
+      _id: { type: String },
+      name: { type: String, optional: false },
+      category: {
+        type: String,
+        allowedValues: ['Household', 'Food', 'Shopping', 'Utilities', 'Transportation', 'Entertainment', 'Subscription', 'Pet', 'Miscellaneous'],
+      },
+      amount: { type: Number, optional: false },
+      monthly: {
+        type: Boolean,
+        defaultValue: false,
+      },
+      weekly: {
+        type: Boolean,
+        defaultValue: false,
+        optional: true,
+      },
+      date: {
+        type: Date,
+      },
+    }).validate({ _id, name, category, amount, monthly, weekly, date });
+
+    Expenses.collection.update(_id, {
+      $set: { name, category, amount, monthly, weekly, date },
+    });
   },
 });
 
