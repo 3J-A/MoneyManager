@@ -65,3 +65,32 @@ Pending / In Progress:
 
 Pending / In Progress: 
 * Expenses Page
+
+## Project Documentation
+
+### Installation 
+
+First, install <a href="https://docs.meteor.com/install.html">Meteor</a>
+
+Second, download the release of our application. 
+
+Third, cd into the moneymanager/app directory and install libraries with:
+```
+$ meteor npm install
+```
+
+Fourth, run the system with:
+```
+$ meteor npm run start
+```
+
+If all goes well, the application will appear at <a href="http://localhost:3000">http://localhost:3000</a>.
+
+### Links
+<a href="https://github.com/3J-A/MoneyManager">Repository</a>
+
+<a href="https://github.com/3J-A/MoneyManager">Documentation</a>
+
+<a href="https://github.com/3J-A/MoneyManager">Released Version</a>
+
+<a href="https://github.com/3J-A/MoneyManager/wiki">Wiki Page</a>
