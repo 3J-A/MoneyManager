@@ -4,6 +4,7 @@ import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import * as Icon from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
@@ -14,13 +15,13 @@ const MakeCard = ({ budget }) => (
   <Col>
     <Card className="h-100" style={{ width: '50' }}>
       <Card.Header>
-        <Card.Title>{budget.category} </Card.Title>
+        <h4><strong>{budget.category}</strong></h4>
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          ${budget.amount}
+          <span style={{ fontSize: '30pt', color: '#48a27b' }}>${budget.amount}</span>
         </Card.Text>
-        <Link to={`/editbudget/${budget._id}`}>Edit</Link>
+        <Card.Text style={{ textAlign: 'right' }}><Link to={`/editbudget/${budget._id}`}><Icon.PencilSquare id="icon" /></Link></Card.Text>
       </Card.Body>
     </Card>
   </Col>
@@ -48,8 +49,10 @@ const Budgets = () => {
   }, []);
   return ready ? (
     <Container id={PageIDs.profilesPage} style={pageStyle}>
-      <h1>Monthly Budgets</h1>
-      <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
+      <h1 className="my-3">Monthly Budgets</h1>
+      <Container className="my-3 px-0">
+        <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
+      </Container>
       <Row xs={3} md={2} lg={3} className="g-2">
         {/* eslint-disable-next-line no-shadow */}
         {budget.map((budget) => <MakeCard key={budget._id} budget={budget} />)}

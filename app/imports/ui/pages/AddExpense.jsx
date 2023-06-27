@@ -52,7 +52,7 @@ const AddExpense = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Add Expense</h2></Col>
+          <Col className="text-center"><h2 className="my-3">Add Expense</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>

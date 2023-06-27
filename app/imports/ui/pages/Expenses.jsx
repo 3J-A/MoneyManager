@@ -4,6 +4,7 @@ import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import * as Icon from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
@@ -12,19 +13,19 @@ import { Expenses } from '../../api/expenses/Expenses';
 /* Component for layout out a Profile Card. */
 const MakeCard = ({ expense }) => (
   <Col>
-    <Card className="h-80" style={{ width: '40' }}>
+    <Card className="mt-2" style={{ width: '40' }}>
       <Card.Header>
-        <Card.Title>{expense.name} </Card.Title>
+        <h4><strong>{expense.name}</strong></h4>
         <Card.Subtitle><span className="date">{expense.category}</span></Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          -${expense.amount}
+          <span style={{ fontSize: '30pt', color: '#C70039 ' }}>-${expense.amount}</span>
         </Card.Text>
         <Card.Text style={{ textAlign: 'right' }}>
-          {`${expense.date}`}
+          {`${expense.date} `}
+          <Link to={`/editexpense/${expense._id}`}><Icon.PencilSquare id="icon" /></Link>
         </Card.Text>
-        <Link to={`/editexpense/${expense._id}`}>Edit</Link>
       </Card.Body>
     </Card>
   </Col>
@@ -56,8 +57,10 @@ const Expense = () => {
   }, []);
   return ready ? (
     <Container id={PageIDs.profilesPage} style={pageStyle}>
-      <h1>Expense Overview</h1>
-      <Button variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}
+      <h1 className="my-3">Expense Overview</h1>
+      <Container className="my-3 px-0">
+        <Button variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}
+      </Container>
       <Row xs={1} md={1} lg={1} className="g-2">
         {/* eslint-disable-next-line no-shadow */}
         {expense.map((expense) => <MakeCard key={expense._id} expense={expense} />)}
