@@ -27,6 +27,7 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Personal Budget Calculator
 * Monthly Page
 * Implement TestCafe
+* Cleanup Code
 
 ## Team Contribution 
 #### Jamie Laurin 
@@ -58,7 +59,7 @@ Pending / In Progress:
 *
 
 Pending / In Progress: 
-* Expenses Page
+* Personal Budget Calculator
 
 ## Project Documentation
 
@@ -82,7 +83,7 @@ If all goes well, the application will appear at <a href="http://localhost:3000"
 
 ## Developer Notes
 
-MoneyManager was a collaborative project we worked on in a Software Quality Assurance course in the Summer 2023 semester at the University of Hawai’i at Mānoa. (Closing thoughts...)
+MoneyManager was a collaborative project we worked on in a Software Quality Assurance course in the Summer 2023 semester at the University of Hawai’i at Mānoa. One of the challenges we faced was the time constraint of this project; due to the course being a summer class, we only had 6 weeks to come up with the concept for the website, and its design, then implement it, and deploy it. There are a couple of features that we intended to implement but had to remove from the final version due to the limitation of time. However, we are proud that we were able to develop a security-oriented website that includes the majority of functionalities that we listed in the first week and learn the fundamentals of the Secure Development Life Cycle in the process.
 
 ## Links
 <a href="https://github.com/3J-A/MoneyManager">Repository</a>
