@@ -17,11 +17,11 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Change Password
 * New Collections
 * User Homepage
+* Budget Page
+* Expenses Page
 
 ## What is in progress?
 * Personal PIN Number
-* Budget Page
-* Expenses Page
 
 ## What is pending? 
 * Personal Budget Calculator
@@ -32,10 +32,13 @@ Money Manager is a web application that aids users in budgeting and financing th
 #### Jamie Laurin 
 * Create New Pages
 * New Collections
+* Budget Page
+* Expense Page
+* Add Budget/Expense Pages
+* Edit Budget/Expense Pages
 
 Pending / In Progress: 
-* Budget Page
-* Expenses Page
+* 
 
 #### Jazmin Lor 
 * Sign-In Page
