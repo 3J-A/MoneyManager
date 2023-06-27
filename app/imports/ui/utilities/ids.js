@@ -48,4 +48,10 @@ export const PageIDs = {
   signInPage: 'signInPage',
   signOutPage: 'signOutPage',
   signUpPage: 'signUpPage',
+  expensePage: 'expensePage',
+  addExpensePage: 'addExpensePage',
+  editExpensePage: 'editExpensePage',
+  budgetPage: 'budgetPage',
+  addBudgetPage: 'addBudgetPage',
+  editBudgetPage: 'editBudgetPage',
 };

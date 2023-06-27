@@ -9,6 +9,8 @@ import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Expenses } from '../../api/expenses/Expenses';
 import { updateExpense } from '../../startup/both/Methods';
+import { PageIDs } from '../utilities/ids';
+import { pageStyle } from './pageStyles';
 
 const bridge = new SimpleSchema2Bridge(Expenses.schema);
 
@@ -44,7 +46,7 @@ const EditExpense = () => {
   };
 
   return ready ? (
-    <Container className="py-3">
+    <Container className="py-3" id={PageIDs.editExpensePage} style={pageStyle}>
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2 className="py-4">Edit Expense</h2></Col>

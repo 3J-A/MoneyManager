@@ -58,7 +58,7 @@ const Expense = () => {
     };
   }, []);
   return ready ? (
-    <Container id={PageIDs.profilesPage} style={pageStyle}>
+    <Container id={PageIDs.expensePage} style={pageStyle}>
       <h1 className="my-3">Expense Overview</h1>
       <Container className="my-3 px-0">
         <Button variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}

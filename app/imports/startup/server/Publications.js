@@ -8,18 +8,18 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Budget } from '../../api/budget/Budget';
 import { Expenses } from '../../api/expenses/Expenses';
 
-Meteor.publish(Expenses.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Expenses.collection.find({ owner: username });
-  }
-  return this.ready();
-});
-
 Meteor.publish(Budget.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Budget.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Expenses.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Expenses.collection.find({ owner: username });
   }
   return this.ready();
 });

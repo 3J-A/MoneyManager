@@ -6,6 +6,8 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { addBudgetMethod } from '../../startup/both/Methods';
+import { PageIDs } from '../utilities/ids';
+import { pageStyle } from './pageStyles';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -33,7 +35,7 @@ const AddBudget = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3" id={PageIDs.addBudgetPage} style={pageStyle}>
       <Row className="justify-content-center">
         <Col xs={10}>
           <Col className="text-center"><h2 className="my-3">Create New Budget</h2></Col>

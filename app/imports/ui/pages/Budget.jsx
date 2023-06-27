@@ -48,7 +48,7 @@ const Budgets = () => {
     };
   }, []);
   return ready ? (
-    <Container id={PageIDs.profilesPage} style={pageStyle}>
+    <Container id={PageIDs.budgetPage} style={pageStyle}>
       <h1 className="my-3">Monthly Budgets</h1>
       <Container className="my-3 px-0">
         <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
