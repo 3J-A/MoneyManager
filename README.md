@@ -37,9 +37,6 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Add Budget/Expense Pages
 * Edit Budget/Expense Pages
 
-Pending / In Progress: 
-* 
-
 #### Jazmin Lor 
 * Sign-In Page
 * Sign-Up Page
@@ -55,9 +52,6 @@ Pending / In Progress:
 * Two-Factor Authentication
 * Change Password
 * User Homepage
-
-Pending / In Progress:
-* 
 
 #### Audrey Soares 
 *
@@ -86,11 +80,15 @@ $ meteor npm run start
 
 If all goes well, the application will appear at <a href="http://localhost:3000">http://localhost:3000</a>.
 
-### Links
+## Developer Notes
+
+MoneyManager was a collaborative project we worked on in a Software Quality Assurance course in the Summer 2023 semester at the University of Hawai’i at Mānoa. (Closing thoughts...)
+
+## Links
 <a href="https://github.com/3J-A/MoneyManager">Repository</a>
 
-<a href="https://github.com/3J-A/MoneyManager">Documentation</a>
+<a href="https://docs.google.com/document/d/16j1OPLjrhE_WgBipwYMMAD5qkD96RFGqWVf22sPJ0a8/edit#">Documentation</a>
 
-<a href="https://github.com/3J-A/MoneyManager">Released Version</a>
+<a href="https://github.com/3J-A/MoneyManager/releases">Released Version</a>
 
 <a href="https://github.com/3J-A/MoneyManager/wiki">Wiki Page</a>
