@@ -81,7 +81,6 @@ Meteor.methods({
   'Expense.add'({ name, category, amount, monthly, weekly, date }) {
     const owner = Meteor.user().username;
     Expenses.collection.insert({ name, category, amount, monthly, weekly, date, owner });
-    Expenses.collection.update({ $set: name, category, amount, monthly, weekly, date });
   },
 });
 
@@ -91,16 +90,23 @@ Meteor.methods({
   'Budget.add'({ category, amount }) {
     const owner = Meteor.user().username;
     Budget.collection.insert({ category, amount, owner });
-    Budget.collection.update({ $set: { category, amount } });
   },
 });
 
 const updateBudget = 'Budget.update';
 
 Meteor.methods({
-  'Budget.update'({ category, amount, _id }) {
-    Budget.collection.update({ _id }, { $set: { category, amount } });
+  'Budget.update'({ category, amount }) {
+    Budget.collection.update({ $set: { category, amount } });
   },
 });
 
-export { updateAccountMethod, updateProfileMethod, addProjectMethod, addExpenseMethod, addBudgetMethod, updateBudget };
+const updateExpense = 'Expense.update';
+
+Meteor.methods({
+  'Expense.update'({ name, category, amount, monthly, weekly, date }) {
+    Expenses.collection.update({ $set: { name, category, amount, monthly, weekly, date } });
+  },
+});
+
+export { updateAccountMethod, updateProfileMethod, addProjectMethod, addExpenseMethod, addBudgetMethod, updateBudget, updateExpense };
