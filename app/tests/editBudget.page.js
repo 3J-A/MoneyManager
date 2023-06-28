@@ -1,9 +1,9 @@
 import { Selector } from 'testcafe';
 import { PageIDs } from '../imports/ui/utilities/ids';
 
-class BudgetPage {
+class EditBudgetPage {
   constructor() {
-    this.pageId = `#${PageIDs.budgetPage}`;
+    this.pageId = `#${PageIDs.editBudgetPage}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -13,4 +13,4 @@ class BudgetPage {
   }
 }
 
-export const budgetPage = new BudgetPage();
+export const editBudgetPage = new EditBudgetPage();
