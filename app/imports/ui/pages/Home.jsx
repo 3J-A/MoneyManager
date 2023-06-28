@@ -185,7 +185,7 @@ const Home = () => {
                     ]
                   )}
                   <h5 className="mt-2 mb-4 ms-1"><strong>${amountSpentRounded}</strong> of <strong>${monthlyBudgetRounded}</strong> spent</h5>
-                  <a href="/monthly" className="text-decoration-none">
+                  <a href="/budget" className="text-decoration-none">
                     <Button variant="primary">Edit</Button>
                   </a>
                 </Container>

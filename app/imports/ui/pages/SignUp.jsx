@@ -17,14 +17,13 @@ const SignUp = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: { type: Number, label: 'PIN', optional: false },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password, PIN } = doc;
-    Accounts.createUser({ username: email, email: email, password: password, profile: { name: '' }, PIN }, (err) => {
+    const { email, password } = doc;
+    Accounts.createUser({ username: email, email: email, password: password, profile: { name: '' } }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -50,8 +49,6 @@ const SignUp = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signUpFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
-                <TextField id={ComponentIDs.signUpFormPIN} name="PIN" placeholder="PIN Number" type="password" pattern="[0-9]{4}" maxLength="4" />
-                <p>Note: Do not ever share your personal PIN number with anyone!</p>
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signUpFormSubmit} />
               </Card.Body>

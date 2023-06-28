@@ -65,9 +65,9 @@ Pending / In Progress:
 
 ### Installation 
 
-First, install <a href="https://docs.meteor.com/install.html">Meteor</a>
+First, install <a href="https://docs.meteor.com/install.html">Meteor</a>.
 
-Second, download the release of our application. 
+Second, download the [latest release](https://github.com/3J-A/MoneyManager/releases) of our application. 
 
 Third, cd into the moneymanager/app directory and install libraries with:
 ```
@@ -90,6 +90,6 @@ MoneyManager was a collaborative project we worked on in a Software Quality Assu
 
 <a href="https://docs.google.com/document/d/16j1OPLjrhE_WgBipwYMMAD5qkD96RFGqWVf22sPJ0a8/edit#">Documentation</a>
 
-<a href="https://github.com/3J-A/MoneyManager/releases">Released Version</a>
+<a href="https://github.com/3J-A/MoneyManager/releases">Released Versions</a>
 
 <a href="https://github.com/3J-A/MoneyManager/wiki">Wiki Page</a>

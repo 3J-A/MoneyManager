@@ -115,7 +115,7 @@ const Landing = () => {
               </Container>
             </Col>
             <Col xs={6} className="text-center my-auto px-1">
-              <Image src="/images/mobile_3.png" className="px-1" width={240} />
+              <Image src="/images/mobile_3b.png" className="px-1" width={240} />
             </Col>
           </Row>
         </Container>

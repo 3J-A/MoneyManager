@@ -19,7 +19,6 @@ const SignIn = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: { type: Number, label: 'PIN', optional: false },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
@@ -67,7 +66,6 @@ const SignIn = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
-                <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="Personal PIN Number" type="password" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>

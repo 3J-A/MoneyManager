@@ -13,7 +13,6 @@ const Verity = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
-    PIN: { type: Number, label: 'PIN', optional: false },
     code: { type: Number, label: '2FA Code', optional: false },
   });
   const bridge = new SimpleSchema2Bridge(schema);
@@ -47,7 +46,6 @@ const Verity = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
-                <TextField id={ComponentIDs.signInFormPIN} name="PIN" placeholder="Personal PIN Number" type="password" />
                 <TextField id={ComponentIDs.signInFormPIN} name="code" placeholder="6-digit 2FA code" type="password" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
