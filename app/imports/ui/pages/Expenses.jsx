@@ -10,7 +10,7 @@ import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
 import { Expenses } from '../../api/expenses/Expenses';
 
-/* Component for layout out a Profile Card. */
+/* Component for layout out an Expenses Card. */
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const MakeCard = ({ expense }) => (
@@ -45,7 +45,7 @@ MakeCard.propTypes = {
   }).isRequired,
 };
 
-/* Renders the Profile Collection as a set of Cards. */
+/* Renders the Expenses Collection as a set of Cards. */
 const Expense = () => {
 
   const { ready, expense } = useTracker(() => {

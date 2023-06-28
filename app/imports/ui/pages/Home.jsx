@@ -117,7 +117,7 @@ const Home = () => {
     };
   }, []);
 
-  // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
+  // Create the form schema for uniforms. Need to determine all interests and projects for multiselect list.
   const bridge = new SimpleSchema2Bridge(formSchema);
   // Current month and year
   const date = new Date();

@@ -10,7 +10,7 @@ import { pageStyle } from './pageStyles';
 import { PageIDs } from '../utilities/ids';
 import { Budget } from '../../api/budget/Budget';
 
-/* Component for layout out a Profile Card. */
+/* Component for layout out a Budget Card. */
 const MakeCard = ({ budget }) => (
   <Col>
     <Card className="h-100" style={{ width: '50' }}>
@@ -35,7 +35,7 @@ MakeCard.propTypes = {
   }).isRequired,
 };
 
-/* Renders the Profile Collection as a set of Cards. */
+/* Renders the Budget Collection as a set of Cards. */
 const Budgets = () => {
 
   const { ready, budget } = useTracker(() => {
