@@ -25,7 +25,6 @@ Money Manager is a web application that aids users in budgeting and financing th
 
 ## What is pending? 
 * Personal Budget Calculator
-* Monthly Page
 * Implement TestCafe
 * Cleanup Code
 
@@ -44,7 +43,9 @@ Money Manager is a web application that aids users in budgeting and financing th
 
 Pending / In Progress: 
 * Personal PIN Number (when the user logs in/signs up)
-* Monthly Page
+* Cleanup Code
+* Implement TestCafe
+
 
 #### Jake Walker
 * Landing Page
