@@ -11,6 +11,7 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Landing Page
 * Sign-Up Page
 * Sign-In Page
+* Sign-Out Page
 * About Us Page
 * Security Settings Page
 * Two-Factor Authentication
@@ -20,10 +21,11 @@ Money Manager is a web application that aids users in budgeting and financing th
 * Budget Page
 * Expenses Page
 * Clean-up Code
+* Implement TestCafe Pages/IDs
+
 
 ## What is pending? 
 * Personal Budget Calculator
-* Implement TestCafe
 
 ## Team Contribution 
 #### Jamie Laurin 
@@ -37,12 +39,9 @@ Money Manager is a web application that aids users in budgeting and financing th
 #### Jazmin Lor 
 * Sign-In Page
 * Sign-Up Page
-* Cleanup Code
-
-
-Pending / In Progress: 
-* Implement TestCafe
-
+* Sign-Out Page
+* Clean-up Code
+* Implement TestCafe Pages/IDs
 
 #### Jake Walker
 * Landing Page
