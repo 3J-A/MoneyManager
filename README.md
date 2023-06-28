@@ -19,14 +19,11 @@ Money Manager is a web application that aids users in budgeting and financing th
 * User Homepage
 * Budget Page
 * Expenses Page
-
-## What is in progress?
-* Personal PIN Number
+* Clean-up Code
 
 ## What is pending? 
 * Personal Budget Calculator
 * Implement TestCafe
-* Cleanup Code
 
 ## Team Contribution 
 #### Jamie Laurin 
@@ -40,10 +37,10 @@ Money Manager is a web application that aids users in budgeting and financing th
 #### Jazmin Lor 
 * Sign-In Page
 * Sign-Up Page
+* Cleanup Code
+
 
 Pending / In Progress: 
-* Personal PIN Number (when the user logs in/signs up)
-* Cleanup Code
 * Implement TestCafe
 
 
