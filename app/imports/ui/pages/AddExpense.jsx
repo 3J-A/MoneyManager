@@ -33,7 +33,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddContact page for adding a document. */
+/* Renders the AddExpense page for adding a document. */
 const AddExpense = () => {
 
   // On submit, insert the data.

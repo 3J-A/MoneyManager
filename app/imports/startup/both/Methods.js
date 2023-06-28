@@ -1,10 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { Projects } from '../../api/projects/Projects';
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Expenses } from '../../api/expenses/Expenses';
 import { Budget } from '../../api/budget/Budget';
 
@@ -40,41 +35,11 @@ Meteor.methods({
   },
 });
 
-const updateProfileMethod = 'Profiles.update';
-
 /**
  * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
  * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
  * updated situation specified by the user.
  */
-Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, projects }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
-    ProfilesInterests.collection.remove({ profile: email });
-    ProfilesProjects.collection.remove({ profile: email });
-    interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
-    projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
-  },
-});
-
-const addProjectMethod = 'Projects.add';
-
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
-Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, participants, homepage }) {
-    Projects.collection.insert({ name, description, picture, homepage });
-    ProfilesProjects.collection.remove({ project: name });
-    ProjectsInterests.collection.remove({ project: name });
-    if (interests) {
-      interests.map((interest) => ProjectsInterests.collection.insert({ project: name, interest }));
-    } else {
-      throw new Meteor.Error('At least one interest is required.');
-    }
-    if (participants) {
-      participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));
-    }
-  },
-});
 
 const addExpenseMethod = 'Expense.add';
 
@@ -144,4 +109,4 @@ Meteor.methods({
   },
 });
 
-export { updateAccountMethod, updateProfileMethod, addProjectMethod, addExpenseMethod, addBudgetMethod, updateBudget, updateExpense };
+export { updateAccountMethod, addExpenseMethod, addBudgetMethod, updateBudget, updateExpense };
