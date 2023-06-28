@@ -88,7 +88,7 @@ MoneyManager was a collaborative project we worked on in a Software Quality Assu
 ## Links
 <a href="https://github.com/3J-A/MoneyManager">Repository</a>
 
-<a href="https://docs.google.com/document/d/16j1OPLjrhE_WgBipwYMMAD5qkD96RFGqWVf22sPJ0a8/edit#">Documentation</a>
+<a href="https://github.com/3J-A/MoneyManager/blob/main/documentation.pdf">Documentation</a>
 
 <a href="https://github.com/3J-A/MoneyManager/releases">Released Versions</a>
 
