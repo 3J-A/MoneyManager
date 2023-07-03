@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { addExpenseMethod } from '../../startup/both/Methods';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { pageStyle } from './pageStyles';
 
 // Create a schema to specify the structure of the data to appear in the form.
@@ -59,8 +59,9 @@ const AddExpense = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col><TextField name="name" /></Col>
+                  <Col><TextField id={ComponentIDs.addExpenseName} name="name" /></Col>
                   <Col><SelectField
+                    id={ComponentIDs.addExpenseType}
                     name="category"
                     showInlineError
                     placeholder="Select One"
@@ -68,13 +69,13 @@ const AddExpense = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><NumField name="amount" /></Col>
+                  <Col><NumField id={ComponentIDs.addExpenseAmount} name="amount" /></Col>
                 </Row>
                 <Row>
                   <Col><BoolField name="monthly" /></Col>
                   <Col><BoolField name="weekly" /></Col>
                 </Row>
-                <SubmitField value="Submit" />
+                <SubmitField id={ComponentIDs.addExpenseSubmit} value="Submit" />
                 <ErrorsField />
                 <HiddenField name="date" value={new Date()} />
               </Card.Body>

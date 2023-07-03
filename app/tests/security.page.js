@@ -1,16 +1,16 @@
 import { Selector } from 'testcafe';
 import { PageIDs } from '../imports/ui/utilities/ids';
 
-class SignOutPage {
+class SecurityPage {
   constructor() {
-    this.pageId = `#${PageIDs.signOutPage}`;
+    this.pageId = `#${PageIDs.securityPage}`;
     this.pageSelector = Selector(this.pageId);
   }
 
-  /** Checks that this page is currently displayed. */
+  /* Checks that this page is currently displayed. */
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
 }
 
-export const signOutPage = new SignOutPage();
+export const securityPage = new SecurityPage();

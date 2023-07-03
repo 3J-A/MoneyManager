@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import { PageIDs } from '../imports/ui/utilities/ids';
+import { ComponentIDs, PageIDs } from '../imports/ui/utilities/ids';
 
 class BudgetPage {
   constructor() {
@@ -9,7 +9,15 @@ class BudgetPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.wait(60000).expect(this.pageSelector.exists).ok();
+    await testController.expect(this.pageSelector.exists).ok();
+  }
+
+  async gotoAddBudgetPage(testController) {
+    await testController.click(`#${ComponentIDs.addBudgetRef}`);
+  }
+
+  async gotoEditBudgetPage(testController) {
+    await testController.click(`#${ComponentIDs.editBudgetLink}`);
   }
 }
 

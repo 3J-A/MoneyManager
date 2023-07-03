@@ -7,6 +7,7 @@ import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { pageStyle } from './pageStyles';
+import { PageIDs } from '../utilities/ids';
 
 const formSchemaPassword = new SimpleSchema({
   oldPassword: { type: String, label: 'Old password', optional: false },
@@ -57,7 +58,7 @@ const Security = () => {
   const [qrCode, setQrCode] = useState(null);
   const [qrSecret, setQRSecret] = useState(null);
   return (
-    <Container className="justify-content-center" style={pageStyle}>
+    <Container id={PageIDs.securityPage} className="justify-content-center" style={pageStyle}>
       <Row className="justify-content-center">
         <Col xs={9} md={7}>
           <Col className="text-center py-3">

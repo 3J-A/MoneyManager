@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Budget } from '../../api/budget/Budget';
 
 /* Component for layout out a Budget Card. */
@@ -21,7 +21,7 @@ const MakeCard = ({ budget }) => (
         <Card.Text>
           <span style={{ fontSize: '30pt', color: '#48a27b' }}>${budget.amount}</span>
         </Card.Text>
-        <Card.Text style={{ textAlign: 'right' }}><Link to={`/editbudget/${budget._id}`}><Icon.PencilSquare id="icon" /></Link></Card.Text>
+        <Card.Text style={{ textAlign: 'right' }}><Link id={ComponentIDs.editBudgetLink} to={`/editbudget/${budget._id}`}><Icon.PencilSquare id="icon" /></Link></Card.Text>
       </Card.Body>
     </Card>
   </Col>
@@ -51,7 +51,7 @@ const Budgets = () => {
     <Container id={PageIDs.budgetPage} style={pageStyle}>
       <h1 className="my-3">Monthly Budgets</h1>
       <Container className="my-3 px-0">
-        <Button variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
+        <Button id={ComponentIDs.addBudgetRef} variant="outline-success" href="/addbudget">Add Budget</Button>{' '}
       </Container>
       <Row xs={3} md={2} lg={3} className="g-2">
         {/* eslint-disable-next-line no-shadow */}

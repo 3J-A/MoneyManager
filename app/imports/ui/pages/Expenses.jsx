@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { pageStyle } from './pageStyles';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Expenses } from '../../api/expenses/Expenses';
 
 /* Component for layout out an Expenses Card. */
@@ -25,8 +25,8 @@ const MakeCard = ({ expense }) => (
           <span style={{ fontSize: '30pt', color: '#C70039 ' }}>-${expense.amount}</span>
         </Card.Text>
         <Card.Text style={{ textAlign: 'right' }}>
-          {`${months[expense.date.getMonth()]} ${expense.date.getDay()}, ${expense.date.getFullYear()} `}
-          <Link to={`/editexpense/${expense._id}`}> <Icon.PencilSquare id="icon" /></Link>
+          {`${months[expense.date.getMonth()]} ${expense.date.getDate()}, ${expense.date.getFullYear()} `}
+          <Link id={ComponentIDs.editExpenseLink} to={`/editexpense/${expense._id}`}> <Icon.PencilSquare id="icon" /></Link>
         </Card.Text>
       </Card.Body>
     </Card>
@@ -61,7 +61,7 @@ const Expense = () => {
     <Container id={PageIDs.expensePage} style={pageStyle}>
       <h1 className="my-3">Expense Overview</h1>
       <Container className="my-3 px-0">
-        <Button variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}
+        <Button id={ComponentIDs.addExpensesButton} variant="outline-danger" href="/addexpense">Add Expense</Button>{' '}
       </Container>
       <Row xs={1} md={1} lg={1} className="g-2">
         {/* eslint-disable-next-line no-shadow */}

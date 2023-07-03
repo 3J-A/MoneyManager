@@ -58,11 +58,7 @@ class NavBar {
   }
 
   async gotoBudgetPage(testController) {
-    await testController.click(`#${PageIDs.budgetPage}`);
-  }
-
-  async gotoAddBudgetPage(testController) {
-    await testController.click(`#${PageIDs.addBudgetPage}`);
+    await testController.click(`#${ComponentIDs.budgetMenuItem}`);
   }
 
   async gotoEditBudgetPage(testController) {
@@ -70,11 +66,7 @@ class NavBar {
   }
 
   async gotoExpensePage(testController) {
-    await testController.click(`#${PageIDs.expensePage}`);
-  }
-
-  async gotoAddExpensePage(testController) {
-    await testController.click(`#${PageIDs.addExpensePage}`);
+    await testController.click(`#${ComponentIDs.expensesMenuItem}`);
   }
 
   async gotoEditExpensePage(testController) {

@@ -30,11 +30,11 @@ const MakeBudget = ({ budget, spent }) => (
     <h4 className="mt-3">{budget.category}</h4>
     {((budget.amount - spent) >= 0) ? (
       [
-        <span style={{ fontSize: '27pt', color: '#48a27b' }}>${budget.amount - spent}</span>,
+        <span style={{ fontSize: '27pt', color: '#48a27b' }}>${Number(`${Math.round(`${budget.amount - spent}e2`)}e-2`)}</span>,
       ]
     ) : (
       [
-        <span style={{ fontSize: '27pt', color: '#FF4545' }}>-${-(budget.amount - spent)}</span>,
+        <span style={{ fontSize: '27pt', color: '#FF4545' }}>-${Number(`${Math.round(`${-(budget.amount - spent)}e2`)}e-2`)}</span>,
       ]
     )}
     <h5 className="mt-2 mb-4 ms-1"><strong>${spent}</strong> of <strong>${budget.amount}</strong> spent</h5>
@@ -177,11 +177,11 @@ const Home = () => {
                   <h4 className="mt-3">{`${month} ${year}`}</h4>
                   {((monthlyBudgetRounded - amountSpentRounded) >= 0) ? (
                     [
-                      <span style={{ fontSize: '40pt', color: '#48a27b' }}>${monthlyBudgetRounded - amountSpentRounded}</span>,
+                      <span style={{ fontSize: '40pt', color: '#48a27b' }}>${Number(`${Math.round(`${monthlyBudgetRounded - amountSpentRounded}e2`)}e-2`)}</span>,
                     ]
                   ) : (
                     [
-                      <span style={{ fontSize: '40pt', color: '#FF4545' }}>-${-(monthlyBudgetRounded - amountSpentRounded)}</span>,
+                      <span style={{ fontSize: '40pt', color: '#FF4545' }}>-${Number(`${Math.round(`${-(monthlyBudgetRounded - amountSpentRounded)}e2`)}e-2`)}</span>,
                     ]
                   )}
                   <h5 className="mt-2 mb-4 ms-1"><strong>${amountSpentRounded}</strong> of <strong>${monthlyBudgetRounded}</strong> spent</h5>
@@ -207,7 +207,7 @@ const Home = () => {
                   ))}
                   {(Budget.collection.find().count() === 0) ? (
                     [
-                      <a href="/budget" className="text-decoration-none">
+                      <a href="/addbudget" className="text-decoration-none">
                         <Button variant="primary">Add</Button>
                       </a>,
                     ]
@@ -227,9 +227,19 @@ const Home = () => {
                 <hr />
                 <Container className="px-4">
                   {expenses.map((expense) => <MakeExpense key={expense._id} expense={expense} />)}
-                  <a href="/expenses" className="text-decoration-none">
-                    <Button variant="primary">Add</Button>
-                  </a>
+                  {(Expenses.collection.find().count() === 0) ? (
+                    [
+                      <a href="/addexpense" className="text-decoration-none">
+                        <Button variant="primary">Add</Button>
+                      </a>,
+                    ]
+                  ) : (
+                    [
+                      <a href="/expenses" className="text-decoration-none">
+                        <Button variant="primary">Edit</Button>
+                      </a>,
+                    ]
+                  )}
                 </Container>
               </Card.Body>
             </Card>
@@ -239,7 +249,7 @@ const Home = () => {
                 <hr />
                 <Container className="px-4">
                   <a href="/security" className="text-decoration-none">
-                    <Button variant="primary">Password and 2FA</Button>
+                    <Button id={ComponentIDs.securityRef} variant="primary">Password and 2FA</Button>
                   </a>
                 </Container>
               </Card.Body>

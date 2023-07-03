@@ -1,9 +1,4 @@
 {
-  "defaultAccounts": [
-    { "email": "admin@hawaii.edu", "password": "changeme", "role": "admin" },
-    { "username": "john@hawaii.edu", "password": "foo" }
-  ],
-
   "defaultBudget": [
     {
       "category": "Household",

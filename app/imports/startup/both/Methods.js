@@ -60,6 +60,7 @@ Meteor.methods({
 });
 
 const updateBudget = 'Budget.update';
+
 Meteor.methods({
   'Budget.update'({ _id, category, amount }) {
     new SimpleSchema({
@@ -71,7 +72,7 @@ Meteor.methods({
       amount: { type: Number, optional: false },
     }).validate({ _id, category, amount });
 
-    Expenses.collection.update(_id, {
+    Budget.collection.update(_id, {
       $set: { category, amount },
     });
   },

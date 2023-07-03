@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import { PageIDs } from '../imports/ui/utilities/ids';
+import { ComponentIDs, PageIDs } from '../imports/ui/utilities/ids';
 
 class AddBudgetPage {
   constructor() {
@@ -9,7 +9,17 @@ class AddBudgetPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.wait(60000).expect(this.pageSelector.exists).ok();
+    await testController.expect(this.pageSelector.exists).ok();
+  }
+
+  async addBudget(testController) {
+    const typeSelector = Selector(`#${ComponentIDs.addBudgetType}`);
+    const selectOption = typeSelector().find('option');
+    await testController.click(typeSelector());
+    await testController.click(selectOption.withText('Food'));
+    await testController.typeText(`#${ComponentIDs.addBudgetAmount}`, '300');
+    await testController.click(`#${ComponentIDs.addBudgetSubmit} .btn`);
+    await testController.click(Selector('.swal-button--confirm'));
   }
 }
 

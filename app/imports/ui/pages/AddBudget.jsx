@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { addBudgetMethod } from '../../startup/both/Methods';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { pageStyle } from './pageStyles';
 
 // Create a schema to specify the structure of the data to appear in the form.
@@ -44,6 +44,7 @@ const AddBudget = () => {
               <Card.Body>
                 <Row>
                   <Col><SelectField
+                    id={ComponentIDs.addBudgetType}
                     name="category"
                     showInlineError
                     placeholder="Select One"
@@ -51,9 +52,9 @@ const AddBudget = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><NumField name="amount" /></Col>
+                  <Col><NumField id={ComponentIDs.addBudgetAmount} name="amount" /></Col>
                 </Row>
-                <SubmitField value="Submit" />
+                <SubmitField id={ComponentIDs.addBudgetSubmit} value="Submit" />
                 <ErrorsField />
               </Card.Body>
             </Card>
